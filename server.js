@@ -1,5 +1,5 @@
 const { Client, LocalAuth } = require('whatsapp-web.js');
-const qrcode = require('qrcode-terminal');
+const qrcode = require('qrcode'); // Utilisation du générateur de QR code classique
 const express = require('express');
 const cors = require('cors');
 
@@ -14,9 +14,14 @@ const client = new Client({
     }
 });
 
+// Génère un lien de visualisation propre dans les logs au lieu des blocs de texte
 client.on('qr', (qr) => {
-    console.log('--- SCANNEZ CE QR CODE ---');
-    qrcode.generate(qr, { small: true });
+    console.log('--- SCANNEZ CE QR CODE VIA LE LIEN CI-DESSOUS ---');
+    qrcode.toDataURL(qr, (err, url) => {
+        if (!err) {
+            console.log(`Ouvrez ce lien dans votre navigateur pour voir le QR code : https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${encodeURIComponent(qr)}`);
+        }
+    });
 });
 
 client.on('ready', () => {
@@ -42,7 +47,7 @@ app.post('/api/nouveau-client', async (req, res) => {
     }
 });
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 10000;
 app.listen(PORT, '0.0.0.0', () => {
     console.log(`Serveur démarré sur le port ${PORT}`);
 });
