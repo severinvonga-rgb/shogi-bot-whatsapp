@@ -1,7 +1,6 @@
 const { Client, RemoteAuth } = require('whatsapp-web.js');
 const { MongoStore } = require('wwebjs-mongo');
 const mongoose = require('mongoose');
-const qrcode = require('qrcode');
 const express = require('express');
 const cors = require('cors');
 
@@ -9,7 +8,6 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-// 1. Démarrer le serveur HTTP immédiatement pour Render (évite le timeout)
 const PORT = process.env.PORT || 10000;
 app.listen(PORT, '0.0.0.0', () => {
     console.log(`✅ Serveur démarré et port ${PORT} ouvert sur Render`);
@@ -40,7 +38,6 @@ app.post('/api/nouveau-client', async (req, res) => {
     }
 });
 
-// 2. Connexion à MongoDB Atlas et initialisation de WhatsApp en arrière-plan
 const MONGO_URI = "mongodb+srv://severinvonga_db_user:PU2uDALXOEFQkigo@shogi.khxtztp.mongodb.net/?retryWrites=true&w=majority";
 
 mongoose.connect(MONGO_URI).then(() => {
@@ -51,7 +48,7 @@ mongoose.connect(MONGO_URI).then(() => {
         authStrategy: new RemoteAuth({
             store: store,
             clientId: 'shogi-bot-session',
-            backupSyncIntervalMs: 300000
+            backupSyncIntervalMs: 60000 // Sauvegarde périodique sur MongoDB
         }),
         puppeteer: {
             args: [
@@ -71,11 +68,7 @@ mongoose.connect(MONGO_URI).then(() => {
 
     client.on('qr', (qr) => {
         console.log('--- SCANNEZ CE QR CODE VIA LE LIEN CI-DESSOUS ---');
-        qrcode.toDataURL(qr, (err, url) => {
-            if (!err) {
-                console.log(`Ouvrez ce lien dans votre navigateur pour voir le QR code : https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${encodeURIComponent(qr)}`);
-            }
-        });
+        console.log(`https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${encodeURIComponent(qr)}`);
     });
 
     client.on('ready', () => {
@@ -83,7 +76,7 @@ mongoose.connect(MONGO_URI).then(() => {
     });
 
     client.on('remote_session_saved', () => {
-        console.log('💾 Session sauvegardée avec succès sur MongoDB !');
+        console.log('💾 Session sauvegardée avec succès sur MongoDB Atlas !');
     });
 
     client.initialize();
