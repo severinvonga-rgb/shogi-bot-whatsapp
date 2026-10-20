@@ -12,7 +12,7 @@ app.use(cors());
 // 1. Démarrer le serveur HTTP immédiatement pour Render (évite le timeout)
 const PORT = process.env.PORT || 10000;
 app.listen(PORT, '0.0.0.0', () => {
-    console.log(`✅ Serveur démarré et port ${PORT ouvert} sur Render`);
+    console.log(`✅ Serveur démarré et port ${PORT} ouvert sur Render`);
 });
 
 app.get('/', (req, res) => {
