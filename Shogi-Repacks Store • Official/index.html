@@ -1,0 +1,1317 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<title>Shogi-repacks.com - Official Store</title>
+<link rel="icon" type="image/svg+xml" href="logo.svg">
+<style>
+:root {
+	--bg-main: #0b0c10;
+	--card-bg: #14161f;
+	--card-hover: #1c1f2b;
+	--accent: #ff5500;
+	--accent-hover: #ff7324;
+	--accent-glow: rgba(255, 85, 0, 0.35);
+	--gold: #f5a623;
+	--gold-glow: rgba(245, 166, 35, 0.25);
+	--whatsapp: #25D366;
+	--whatsapp-hover: #20ba5a;
+	--border-glass: rgba(255, 255, 255, 0.08);
+	--border-glow: rgba(255, 85, 0, 0.4);
+	--text-main: #ffffff;
+	--text-muted: #94969e;
+}
+
+* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+body {
+	margin: 0;
+	background: var(--bg-main);
+	color: var(--text-main);
+	font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+	min-height: 100vh;
+	-webkit-font-smoothing: antialiased;
+	overflow-x: hidden;
+	-webkit-user-select: none;
+	user-select: none;
+}
+
+/* NAVBAR TOP */
+.ig-navbar {
+	background: #111319;
+	border-bottom: 1px solid var(--border-glass);
+	padding: 10px 16px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	position: sticky;
+	top: 0;
+	z-index: 1000;
+}
+
+.ig-brand {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	text-decoration: none;
+}
+
+.ig-brand-logo {
+	width: 44px; 
+	height: 44px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	filter: drop-shadow(0 0 8px rgba(255, 85, 0, 0.4));
+}
+
+.ig-brand-logo img { 
+	width: 100%; 
+	height: 100%; 
+	object-fit: contain;
+	image-rendering: -webkit-optimize-contrast;
+}
+
+.ig-brand-text {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.brand-title-main {
+	font-family: 'Inter', system-ui, -apple-system, sans-serif;
+	font-size: 15px;
+	font-weight: 700;
+	letter-spacing: 1.8px;
+	color: #ffffff;
+	line-height: 1.1;
+	text-transform: uppercase;
+}
+
+.brand-title-sub {
+	font-family: 'Inter', system-ui, -apple-system, sans-serif;
+	font-size: 14px;
+	font-weight: 700;
+	letter-spacing: 2px;
+	color: var(--accent);
+	line-height: 1.1;
+	text-transform: uppercase;
+}
+
+.ig-nav-actions {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+
+/* BLOC USER PROFILE NAV */
+.user-profile-badge {
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	background: rgba(255, 255, 255, 0.05);
+	border: 1px solid var(--border-glass);
+	padding: 6px 12px;
+	border-radius: 10px;
+	font-size: 12px;
+	font-weight: 800;
+	color: #fff;
+}
+
+.user-profile-badge img {
+	width: 18px;
+	height: 18px;
+	object-fit: contain;
+}
+
+/* BOUTON PANIER */
+.ig-icon-btn {
+	background: rgba(255, 255, 255, 0.08);
+	border: 1px solid var(--border-glass);
+	color: #fff;
+	padding: 8px 12px;
+	border-radius: 10px;
+	font-size: 13px;
+	font-weight: 700;
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	cursor: pointer;
+	transition: all 0.2s;
+}
+.ig-icon-btn:hover { background: rgba(255, 255, 255, 0.15); }
+
+.ig-cart-icon-img {
+	width: 20px;
+	height: 20px;
+	object-fit: contain;
+}
+
+.ig-cart-badge {
+	background: var(--gold);
+	color: #000;
+	font-size: 11px;
+	padding: 1px 6px;
+	border-radius: 6px;
+	font-weight: 900;
+}
+
+/* BARRE DES PLATEFORMES (STICKY) */
+.platforms-bar {
+	display: flex;
+	gap: 8px;
+	padding: 12px 16px;
+	background: rgba(17, 19, 25, 0.95);
+	backdrop-filter: blur(10px);
+	overflow-x: auto;
+	border-bottom: 1px solid var(--border-glass);
+	scrollbar-width: none;
+	position: sticky;
+	top: 65px;
+	z-index: 990;
+}
+.platforms-bar::-webkit-scrollbar { display: none; }
+
+.platform-pill {
+	background: rgba(255, 255, 255, 0.05);
+	border: 1px solid var(--border-glass);
+	color: var(--text-muted);
+	padding: 6px 14px;
+	border-radius: 20px;
+	font-size: 12px;
+	font-weight: 700;
+	white-space: nowrap;
+	cursor: pointer;
+	transition: all 0.2s;
+	display: flex;
+	align-items: center;
+	gap: 6px;
+}
+.platform-pill:hover, .platform-pill.active {
+	background: rgba(255, 85, 0, 0.15);
+	color: #fff;
+	border-color: var(--accent);
+}
+
+.container { 
+	max-width: 1200px; 
+	margin: 0 auto; 
+	padding: 16px; 
+}
+
+/* ÉCRAN D'AUTHENTIFICATION PRO */
+.auth-overlay {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
+	background: rgba(11, 12, 16, 0.95);
+	backdrop-filter: blur(20px);
+	position: fixed;
+	top: 0; left: 0; width: 100%; height: 100%;
+	z-index: 9999;
+	padding: 20px;
+}
+
+.auth-card {
+	background: var(--card-bg);
+	border: 1px solid var(--border-glass);
+	padding: 30px 20px;
+	border-radius: 20px;
+	box-shadow: 0 25px 50px rgba(0,0,0,0.8);
+	text-align: center;
+	max-width: 380px;
+	width: 100%;
+}
+
+.auth-card .ig-brand-logo {
+	width: 90px;
+	height: 90px;
+	margin: 0 auto 16px auto;
+}
+
+.auth-card input {
+	width: 100%;
+	padding: 14px;
+	margin-bottom: 15px;
+	border: 1px solid var(--border-glass);
+	background: rgba(0, 0, 0, 0.4);
+	color: #fff;
+	border-radius: 12px;
+	font-size: 14px;
+	outline: none;
+}
+.auth-card input:focus { border-color: var(--accent); }
+
+.auth-card button {
+	background: var(--accent);
+	color: white;
+	border: none;
+	padding: 14px;
+	font-weight: 700;
+	border-radius: 12px;
+	cursor: pointer;
+	width: 100%;
+	font-size: 13px;
+	text-transform: uppercase;
+}
+
+.auth-error-msg {
+	background: rgba(255, 69, 58, 0.15);
+	color: #ff453a;
+	padding: 10px;
+	border-radius: 8px;
+	font-size: 11px;
+	margin-bottom: 15px;
+	display: none;
+	text-align: left;
+}
+
+/* CARROUSEL SPOTLIGHT RESPONSIVE */
+.upcoming-carousel {
+	background: #14161f;
+	border: 1px solid var(--border-glass);
+	border-radius: 16px;
+	overflow: hidden;
+	margin-bottom: 24px;
+	box-shadow: 0 12px 35px rgba(0,0,0,0.6);
+	position: relative;
+	height: 220px;
+}
+@media (min-width: 768px) {
+	.upcoming-carousel { height: 320px; }
+}
+
+.carousel-slide {
+	position: absolute;
+	top: 0; left: 0; width: 100%; height: 100%;
+	opacity: 0;
+	transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+	display: flex;
+	align-items: flex-end;
+	will-change: opacity;
+}
+.carousel-slide.active { opacity: 1; }
+
+.carousel-slide picture {
+	position: absolute;
+	top: 0; left: 0; width: 100%; height: 100%;
+	z-index: 1;
+}
+
+.carousel-slide img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	object-position: center;
+	image-rendering: -webkit-optimize-contrast;
+}
+
+.carousel-gradient-overlay {
+	position: absolute;
+	top: 0; left: 0; width: 100%; height: 100%;
+	background: linear-gradient(to top, rgba(0,0,0,0.9) 10%, rgba(0,0,0,0.3) 60%, transparent 100%);
+	z-index: 2;
+}
+
+.carousel-content {
+	position: relative;
+	z-index: 3;
+	padding: 20px;
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-end;
+	width: 100%;
+}
+
+.carousel-game-title {
+	font-size: clamp(16px, 2.5vw, 24px);
+	font-weight: 900;
+	text-transform: uppercase;
+	color: #fff;
+	margin: 0 0 6px 0;
+	text-shadow: 0 2px 8px rgba(0,0,0,0.8);
+}
+
+.carousel-badges-row {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+
+.ig-discount-tag {
+	background: var(--accent);
+	color: #fff;
+	font-weight: 900;
+	font-size: 12px;
+	padding: 4px 8px;
+	border-radius: 6px;
+	box-shadow: 0 0 10px var(--accent-glow);
+}
+
+.ig-price-tag {
+	background: rgba(0, 0, 0, 0.6);
+	backdrop-filter: blur(6px);
+	border: 1px solid var(--border-glass);
+	color: #fff;
+	font-weight: 900;
+	font-size: 15px;
+	padding: 4px 12px;
+	border-radius: 6px;
+}
+
+/* BARRE DE RECHERCHE PRO */
+.search-section {
+	margin-bottom: 24px;
+}
+.search-box-container { 
+	position: relative; 
+	width: 100%; 
+	display: flex;
+	align-items: center;
+}
+
+#gameSearch {
+	width: 100%;
+	padding: 14px 40px 14px 45px;
+	background: var(--card-bg);
+	border: 1px solid var(--border-glass);
+	border-radius: 14px;
+	color: #ffffff; 
+	font-size: 14px;
+	outline: none; 
+	transition: all 0.2s ease;
+}
+#gameSearch:focus {
+	border-color: var(--accent);
+	background: var(--card-hover);
+}
+
+.search-icon {
+	position: absolute;
+	left: 15px;
+	width: 18px; height: 18px;
+	fill: var(--text-muted);
+}
+
+.clear-search-btn {
+	position: absolute;
+	right: 14px;
+	background: rgba(255, 255, 255, 0.08);
+	border: none;
+	color: var(--text-muted);
+	width: 24px; height: 24px;
+	border-radius: 50%;
+	display: none;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	font-size: 14px;
+}
+
+.section-title {
+	font-size: 15px;
+	text-transform: uppercase;
+	font-weight: 900;
+	letter-spacing: 1px;
+	margin-bottom: 14px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+.section-title span { color: var(--accent); font-size: 12px; }
+
+/* GRILLE DE JEUX UNIVERSELLE */
+.game-grid {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 12px;
+}
+@media (min-width: 576px) {
+	.game-grid { grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 16px; }
+}
+@media (min-width: 992px) {
+	.game-grid { grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 20px; }
+}
+
+.game-card {
+	background: var(--card-bg);
+	border: 1px solid var(--border-glass);
+	border-radius: 14px;
+	padding: 10px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+	transition: transform 0.25s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.25s;
+	cursor: pointer;
+	will-change: transform;
+}
+.game-card:hover {
+	transform: translateY(-3px);
+	border-color: var(--border-glow);
+}
+
+.game-thumbnail-container {
+	width: 100%;
+	height: 110px;
+	border-radius: 10px;
+	overflow: hidden;
+	margin-bottom: 8px;
+	background: #0d0f17;
+	position: relative;
+}
+@media (min-width: 768px) {
+	.game-thumbnail-container { height: 130px; }
+}
+
+.game-thumbnail {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	object-position: center;
+	image-rendering: -webkit-optimize-contrast;
+	opacity: 0;
+	transition: opacity 0.4s ease-in-out;
+}
+.game-thumbnail.loaded { opacity: 1; }
+
+.card-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
+.game-year { 
+	color: var(--accent); 
+	font-weight: 800; 
+	font-size: 9px; 
+	background: rgba(255, 85, 0, 0.1);
+	padding: 3px 6px;
+	border-radius: 4px;
+}
+.game-price {
+	color: #000;
+	font-weight: 900;
+	font-size: 10px;
+	background: var(--gold);
+	padding: 3px 8px;
+	border-radius: 4px;
+}
+
+.game-name { 
+	font-size: 12px; 
+	font-weight: 800; 
+	text-transform: uppercase; 
+	line-height: 1.2;
+	margin-bottom: 4px;
+	color: #fff;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+}
+@media(min-width: 768px) { .game-name { font-size: 13px; } }
+
+.game-info {
+	font-size: 10px;
+	color: var(--text-muted);
+	margin-bottom: 10px;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+}
+
+.card-actions {
+	display: flex;
+	gap: 6px;
+}
+
+.btn-whatsapp-mini {
+	background: var(--whatsapp);
+	color: white;
+	border: none;
+	padding: 8px;
+	border-radius: 8px;
+	font-size: 10px;
+	font-weight: 800;
+	text-decoration: none;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex: 1;
+}
+.btn-whatsapp-mini svg { width: 12px; height: 12px; fill: #fff; }
+
+.btn-cart-mini {
+	background: rgba(255, 255, 255, 0.08);
+	border: 1px solid var(--border-glass);
+	color: white;
+	padding: 8px;
+	border-radius: 8px;
+	font-size: 10px;
+	font-weight: 800;
+	cursor: pointer;
+}
+.btn-cart-mini:hover { background: var(--accent); border-color: var(--accent); }
+
+/* PAGINATION PRO STYLE */
+.pagination-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 8px;
+	margin: 30px 0 20px 0;
+}
+
+.page-btn {
+	background: var(--card-bg);
+	border: 1px solid var(--border-glass);
+	color: var(--text-muted);
+	min-width: 38px;
+	height: 38px;
+	padding: 0 10px;
+	border-radius: 10px;
+	font-weight: 800;
+	font-size: 13px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	transition: all 0.2s;
+}
+
+.page-btn:hover {
+	border-color: var(--accent);
+	color: #fff;
+}
+
+.page-btn.active {
+	background: var(--accent);
+	color: #fff;
+	border-color: var(--accent);
+	box-shadow: 0 0 12px var(--accent-glow);
+}
+
+.page-btn.disabled {
+	opacity: 0.4;
+	cursor: not-allowed;
+	pointer-events: none;
+}
+
+/* MODALE DÉTAILS JEU */
+.modal-overlay {
+	position: fixed;
+	top: 0; left: 0; width: 100%; height: 100%;
+	background: rgba(0, 0, 0, 0.85);
+	backdrop-filter: blur(10px);
+	z-index: 2000;
+	display: none;
+	justify-content: center;
+	align-items: center;
+	padding: 16px;
+}
+.modal-card {
+	background: var(--card-bg);
+	border: 1px solid var(--border-glass);
+	border-radius: 16px;
+	max-width: 500px;
+	width: 100%;
+	max-height: 90vh;
+	overflow-y: auto;
+	padding: 20px;
+	position: relative;
+}
+.modal-close-btn {
+	position: absolute; top: 12px; right: 12px;
+	background: rgba(255,255,255,0.1); border: none; color: #fff;
+	width: 28px; height: 28px; border-radius: 50%; cursor: pointer;
+}
+.modal-hero-img { width: 100%; height: 180px; object-fit: cover; border-radius: 10px; margin-bottom: 12px; image-rendering: -webkit-optimize-contrast; }
+
+/* PANIER COULISSANT TRANSPARENT (GLASSMORPHISME AUX COULEURS DU SITE) */
+.cart-drawer-overlay {
+	position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+	background: rgba(11, 12, 16, 0.6); backdrop-filter: blur(6px);
+	z-index: 3000; display: none; justify-content: flex-end;
+}
+.cart-drawer {
+	width: 100%; max-width: 400px; height: 100%;
+	background: rgba(17, 19, 25, 0.85); backdrop-filter: blur(16px);
+	border-left: 1px solid var(--border-glass);
+	display: flex; flex-direction: column;
+	transform: translateX(100%); transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+	box-shadow: -10px 0 30px rgba(0,0,0,0.5);
+}
+.cart-drawer-overlay.open .cart-drawer { transform: translateX(0); }
+
+.cart-header { padding: 18px; border-bottom: 1px solid var(--border-glass); display: flex; justify-content: space-between; align-items: center; background: rgba(20, 22, 31, 0.5); }
+.cart-body { padding: 16px; flex-grow: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; }
+.cart-item { background: rgba(20, 22, 31, 0.6); border: 1px solid var(--border-glass); border-radius: 10px; padding: 10px; display: flex; align-items: center; gap: 12px; position: relative; backdrop-filter: blur(4px); }
+.cart-item-img { width: 50px; height: 50px; border-radius: 8px; object-fit: cover; background: #0d0f17; flex-shrink: 0; }
+.cart-item-details { flex-grow: 1; display: flex; flex-direction: column; gap: 2px; }
+.cart-item-delete { background: rgba(255, 69, 58, 0.2); border: none; color: #ff453a; width: 24px; height: 24px; border-radius: 50%; cursor: pointer; font-size: 14px; display: flex; align-items: center; justify-content: center; }
+
+.cart-footer { padding: 18px; border-top: 1px solid var(--border-glass); background: rgba(20, 22, 31, 0.8); backdrop-filter: blur(8px); }
+
+.btn-checkout {
+	background: var(--whatsapp); color: #fff; border: none; width: 100%;
+	padding: 14px; border-radius: 12px; font-weight: 900; font-size: 12px;
+	text-transform: uppercase; cursor: pointer; text-decoration: none; display: block; text-align: center;
+	transition: background 0.2s;
+}
+.btn-checkout:hover { background: var(--whatsapp-hover); }
+
+.no-results { grid-column: 1 / -1; text-align: center; padding: 40px; color: var(--text-muted); display: none; font-size: 13px; }
+</style>
+</head>
+<body>
+
+<!-- ÉCRAN D'AUTHENTIFICATION PRO -->
+<div class="auth-overlay" id="authOverlay" style="display: none;">
+	<div class="auth-card">
+		<div class="ig-brand-logo">
+			<img src="logo.svg" alt="Shogi Repacks Logo">
+		</div>
+		<div class="ig-brand-text" style="margin-bottom: 15px;">
+			<span class="brand-title-main">SHOGI</span>
+			<span class="brand-title-sub">REPACKS</span>
+		</div>
+		<p style="color: var(--text-muted); font-size: 12px; margin-bottom: 20px;">Entrez votre nom complet pour accéder au catalogue.</p>
+		<div class="auth-error-msg" id="authErrorMsg"></div>
+		<form onsubmit="saveClientName(event)">
+			<input type="text" id="clientInput" placeholder="Votre nom complet..." required autocomplete="off">
+			<button type="submit">Entrer dans la boutique</button>
+		</form>
+	</div>
+</div>
+
+<!-- NAVBAR TOP -->
+<div class="ig-navbar">
+	<a href="#" class="ig-brand">
+		<div class="ig-brand-logo">
+			<img src="logo.svg" alt="Shogi Repacks Logo">
+		</div>
+		<div class="ig-brand-text">
+			<span class="brand-title-main">SHOGI</span>
+			<span class="brand-title-sub">REPACKS</span>
+		</div>
+	</a>
+	<div class="ig-nav-actions">
+		<!-- PROFIL CLIENT -->
+		<div class="user-profile-badge" id="userProfileBadge" style="display: none;">
+			<img src="icon-avatar.svg" alt="Avatar">
+			<span id="navClientName">Client</span>
+		</div>
+		
+		<!-- BOUTON PANIER TRANSPARENT AVEC ICON-AVATAR2.SVG -->
+		<button class="ig-icon-btn" onclick="toggleCartDrawer()">
+			<img src="icon-avatar2.svg" alt="Panier" class="ig-cart-icon-img">
+			<span class="ig-cart-badge" id="navCartCount">0</span>
+		</button>
+	</div>
+</div>
+
+<!-- BARRE DE PLATEFORMES (STICKY) -->
+<div class="platforms-bar">
+	<div class="platform-pill active" onclick="filterPlatform('all')">🔥 Tous les jeux</div>
+	<div class="platform-pill" onclick="window.location.href='Games PC/games-pc.html'">Games PC</div>
+	<div class="platform-pill" onclick="window.location.href='Games Android/games-android.html'">Games Android</div>
+	<div class="platform-pill" onclick="window.location.href='Système Windows/syst-win.html'">Système Windows</div>
+</div>
+
+<div class="container">
+
+	<!-- CARROUSEL SPOTLIGHT RESPONSIVE -->
+	<div class="upcoming-carousel" id="upcomingCarousel"></div>
+
+	<!-- BARRE DE RECHERCHE PRO -->
+	<div class="search-section">
+		<div class="search-box-container">
+			<input type="text" id="gameSearch" placeholder="Rechercher" oninput="handleSearchInput()">
+			<svg class="search-icon" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+			<button class="clear-search-btn" id="clearSearchBtn" onclick="clearSearch()">&times;</button>
+		</div>
+	</div>
+
+	<div class="section-title">
+		Tendances & Sorties <span id="gameCounter">0 jeux</span>
+	</div>
+
+	<div class="game-grid" id="gameGrid"></div>
+	<div class="no-results" id="noResults">Aucun jeu ne correspond à votre recherche.</div>
+
+	<!-- CONTENEUR DE PAGINATION PRO -->
+	<div class="pagination-container" id="paginationContainer"></div>
+
+</div>
+
+<!-- MODALE DÉTAILS DU JEU -->
+<div class="modal-overlay" id="gameModal" onclick="closeGameModal()">
+	<div class="modal-card" onclick="event.stopPropagation()">
+		<button class="modal-close-btn" onclick="closeGameModal()">&times;</button>
+		<img src="" alt="" class="modal-hero-img" id="modalImg">
+		<h2 style="font-size: 16px; text-transform: uppercase; margin: 0 0 8px 0;" id="modalTitle"></h2>
+		<div style="display: flex; gap: 8px; margin-bottom: 12px;">
+			<span class="game-year" id="modalYear"></span>
+			<span class="game-price" id="modalPrice"></span>
+		</div>
+		<p style="font-size: 12px; color: var(--text-muted); line-height: 1.5; margin-bottom: 20px;" id="modalDesc"></p>
+		<div style="display: flex; gap: 8px;" id="modalActions"></div>
+	</div>
+</div>
+
+<!-- SIDEBAR PANIER -->
+<div class="cart-drawer-overlay" id="cartOverlay" onclick="toggleCartDrawer()">
+	<div class="cart-drawer" onclick="event.stopPropagation()">
+		<div class="cart-header">
+			<h3 style="margin: 0; font-size: 14px; text-transform: uppercase;">Votre panier</h3>
+			<button style="background:none; border:none; color:#fff; font-size:18px; cursor:pointer;" onclick="toggleCartDrawer()">&times;</button>
+		</div>
+		<div class="cart-body" id="cartBody"></div>
+		<div class="cart-footer" id="cartFooter"></div>
+	</div>
+</div>
+
+<!-- SDK EmailJS -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+<script>
+(function initAdaptiveResolution() {
+	const dpr = window.devicePixelRatio || 1;
+	const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+	document.documentElement.style.setProperty('--vh-scale', `${window.innerHeight * 0.01}px`);
+	if (isMobile && dpr > 1) { document.body.classList.add('high-density-mobile'); }
+	window.addEventListener('resize', () => {
+		document.documentElement.style.setProperty('--vh-scale', `${window.innerHeight * 0.01}px`);
+	});
+})();
+
+let imageObserver = null;
+function initImageObserver() {
+	if ('IntersectionObserver' in window) {
+		imageObserver = new IntersectionObserver((entries, observer) => {
+			entries.forEach(entry => {
+				if (entry.isIntersecting) {
+					const img = entry.target;
+					const realSrc = img.getAttribute('data-src');
+					if (realSrc) {
+						img.src = realSrc;
+						img.onload = () => img.classList.add('loaded');
+						img.removeAttribute('data-src');
+					}
+					observer.unobserve(img);
+				}
+			});
+		}, { root: null, rootMargin: '100px 0px', threshold: 0.01 });
+	}
+}
+
+const whatsappNumber = "243854167858";
+const gamePriceFC = 40000;
+const exchangeRateUSD = 2800;
+const gamePriceUSD = (gamePriceFC / exchangeRateUSD).toFixed(2);
+
+const upcomingGames = [
+	{ title: "Call of Duty: Modern Warfare 2", discount: "-23%", price: "14.99 $", img: "games déjà dispo/1.png" },
+	{ title: "EA SPORTS FC 2026", discount: "-21%", price: "19.99 $", img: "games déjà dispo/2.png" },
+	{ title: "Blood Message", discount: "-30%", price: "14.99 $", img: "games déjà dispo/3.png" },
+	{ title: "NBA 2K26", discount: "-30%", price: "19.99 $", img: "games déjà dispo/4.png" },
+	{ title: "Dragon Ball Sparking Zero", discount: "-30%", price: "14.99 $", img: "games déjà dispo/5.png" },
+	{ title: "Marvel's Spider-Man 2", discount: "-30%", price: "14.99 $", img: "games déjà dispo/6.png" },
+	{ title: "GTA5", discount: "-30%", price: "14.99 $", img: "games déjà dispo/7.png" },
+	{ title: "Marvel's Spider-Man 2", discount: "-30%", price: "14.99 $", img: "games déjà dispo/8.png" },
+	{ title: "Marvel's Spider-Man 2", discount: "-30%", price: "14.99 $", img: "games déjà dispo/9.png" },
+	{ title: "Marvel's Spider-Man 2", discount: "-30%", price: "14.99 $", img: "games déjà dispo/10.png" }
+];
+
+const gamesData = [
+	["2000", "Baldur s Gate II Shadows of Amn", "Sommet du RPG tactique de Donjons et Dragons."],
+	["2000", "Command & Conquer Red Alert 2", "Soviétiques contre Alliés dans une uchronie camp."],
+	["2000", "Counter-Strike", "FPS tactique en équipe, terroristes contre forces spéciales."],
+	["2000", "Deus Ex", "Cyberpunk et complots mondiaux avec liberté d'approche exemplaire."],
+	["2000", "Diablo II", "La quintessence du jeu de rôle d'action, du loot et de la chasse aux démons dans les ténèbres."],
+	["2000", "The Sims", "La simulation de vie quotidienne et de gestion architecturale la plus vendue de l'histoire."],
+	["2001", "Halo Combat Evolved", "L'introduction légendaire du Master Chief sur un anneau mystérieux et la révolution du FPS console."],
+	["2001", "Max Payne", "Thriller noir et Bullet Time dans un New York enneigé."],
+	["2001", "Return to Castle Wolfenstein", "FPS de la Seconde Guerre mondiale et du surnaturel."],
+	["2002", "Age of Mythology", "Dieux et créatures dans un RTS mythologique."],
+	["2002", "Battlefield 1942", "Guerre totale en ligne avec véhicules."],
+	["2002", "Gothic II", "Retour dans la vallée de Khorinis, monde ouvert dense et sans pitié."],
+	["2002", "Hitman 2 Silent Assassin", "Niveaux ouverts et déguisements inventifs."],
+	["2002", "Medal of Honor Allied Assault", "Débarquement de Normandie en FPS spectaculaire."],
+	["2002", "Splinter Cell", "Sam Fisher et infiltration dans l'ombre."],
+	["2002", "The Elder Scrolls III Morrowind", "Fantasy étrange et dépaysante sur l'île de Vvardenfell."],
+	["2002", "Warcraft III Reign of Chaos", "Le chef-d'œuvre de stratégie en temps réel qui a enfanté le genre des MOBA."],
+	["2003", "Command & Conquer Generals", "Guerre moderne et superpuissances."],
+	["2003", "Max Payne 2 The Fall of Max Payne", "Romance noire et fusillades bullet-time."],
+	["2003", "Need for Speed Underground", "Tuning et courses de rue nocturnes."],
+	["2003", "Star Wars Knights of the Old Republic", "Le RPG galactique de légende et son twist narratif inoubliable."],
+	["2004", "Counter-Strike Source", "Refonte moderne du FPS tactique."],
+	["2004", "Doom 3", "Horreur sombre sur Mars en FPS technique."],
+	["2004", "Far Cry", "Île tropicale et mercenaires génétiquement modifiés."],
+	["2004", "Half-Life 2", "La claque technique de la physique et de la résistance contre le Cartel."],
+	["2004", "Metal Gear Solid 3 Snake Eater", "L'immersion totale dans la jungle de la Guerre Froide et la tragédie du Boss."],
+	["2004", "Need for Speed Underground 2", "Monde ouvert et personnalisation."],
+	["2004", "World of Warcraft", "Le phénomène mondial du jeu de rôle en ligne massivement multijoueur."],
+	["2005", "Age of Empires III", "Colonisation et nouveaux mondes."],
+	["2005", "Battlefield 2", "Guerre moderne et système de commandement."],
+	["2005", "F.E.A.R.", "Horreur et ralentissements dans un FPS à l'IA remarquable."],
+	["2005", "Need for Speed Most Wanted", "Course-poursuite et rivaux à abattre."],
+	["2005", "Resident Evil 4", "Révolution du survival action en Espagne avec Leon S. Kennedy."],
+	["2006", "Hitman Blood Money", "Assassinats élaborés et sommets d'infiltration."],
+	["2006", "The Elder Scrolls IV Oblivion", "L'épopée fantastique somptueuse au cœur de la province de Cyrodiil."],
+	["2007", "Assassin s Creed", "Action-infiltration, Exploration historique au temps des croisades."],
+	["2007", "BioShock", "La descente philosophique et artistique dans la cité sous-marine de Rapture."],
+	["2007", "Call of Duty 4 Modern Warfare", "Le jeu qui a révolutionné le FPS moderne et le multijoueur."],
+	["2007", "Crysis", "Combinaison de nano-fibres et graphismes révolutionnaires."],
+	["2007", "Mass Effect", "Le début de l'épopée spatiale et des choix fondateurs du commandant Shepard."],
+	["2007", "Portal", "Énigmes de portails et GLaDOS cynique."],
+	["2007", "S.T.A.L.K.E.R. Shadow of Chernobyl", "Survie et FPS dans la Zone irradiée."],
+	["2007", "The Witcher", "Premier voyage de Geralt de Riv, entre choix amers et alchimie."],
+	["2008", "Dead Space", "L'horreur viscérale et spatiale à bord du vaisseau minier Ishimura."],
+	["2008", "Fallout 3", "La transition post-apocalyptique spectaculaire en monde ouvert à Washington D.C."],
+	["2008", "GTA IV", "La modélisation physique ultra-réaliste de Liberty City avec Niko Bellic."],
+	["2008", "Left 4 Dead", "Coopération contre des hordes de zombies."],
+	["2008", "Red Dead Redemption 2", "La fresque western la plus minutieuse et bouleversante de l'histoire."],
+	["2009", "Assassin s Creed II", "Chef-d'œuvre de la saga, Italie de la Renaissance avec Ezio Auditore."],
+	["2009", "Batman Arkham Asylum", "Immersion claustrophobique au cœur de l'asile psychiatrique de Gotham."],
+	["2009", "Call of Duty Modern Warfare 2", "Campagne culte et missions inoubliables à travers le globe."],
+	["2009", "League of Legends", "Le jeu de stratégie compétitif en équipe le plus populaire de la planète."],
+	["2009", "Left 4 Dead 2", "Suite coopérative aux armes de corps à corps."],
+	["2010", "Call of Duty Black Ops", "Guerre froide, conspirations et mode zombies mythique."],
+	["2010", "Fallout New Vegas", "Désert du Mojave, factions et choix qui redéfinissent le RPG."],
+	["2010", "Mass Effect 2", "L'un des meilleurs scénarios et recrutements de l'histoire du jeu de rôle."],
+	["2010", "Red Dead Redemption", "La tragédie crépusculaire de John Marston dans un Far West finissant."],
+	["2010", "StarCraft II Wings of Liberty", "Le retour triomphant et ultra-compétitif de la stratégie spatiale."],
+	["2011", "Batman Arkham City", "Monde ouvert magistral dans une zone carcérale de Gotham."],
+	["2011", "Battlefield 3", "FPS de guerre moderne en destruction de masse."],
+	["2011", "Dark Souls", "La consécration de la difficulté juste et de l'exploration interconnectée."],
+	["2011", "Minecraft", "Blocs, créativité et survie sans limite."],
+	["2011", "Portal 2", "Le chef-d'œuvre absolu de la logique spatiale et de l'humour cynique."],
+	["2011", "The Elder Scrolls V Skyrim", "Le monument absolu de la fantasy nordique et des dragons."],
+	["2011", "The Witcher 2 Assassins of Kings", "Intrigues royales, choix radicaux et graphismes somptueux."],
+	["2012", "Borderlands 2", "Looter-shooter plus drôle, plus riche."],
+	["2012", "Counter-Strike Global Offensive", "FPS tactique compétitif mondial."],
+	["2012", "Diablo III", "Retour du chaos à Sanctuaire avec butin et sorts spectaculaires."],
+	["2012", "Far Cry 3", "L'immersion sauvage et la folie psychologique de Vaas sur une île tropicale."],
+	["2013", "Assassin s Creed IV Black Flag", "Piraterie, batailles navales et liberté dans les Caraïbes."],
+	["2013", "Battlefield 4", "FPS de guerre totale et Levolution."],
+	["2013", "BioShock Infinite", "Le voyage vertigineux et politique dans la cité volante de Columbia."],
+	["2013", "GTA V", "Trois protagonistes, braquages et monde ouvert immense à Los Santos."],
+	["2013", "The Last of Us", "Le chef-d'œuvre narratif et dramatique de Joel et Ellie."],
+	["2014", "Alien Isolation", "Le jeu d'horreur de survie ultime face à un Xénomorphe doté d'une IA redoutable."],
+	["2014", "Dark Souls II", "Royaume de Drangleic et combats toujours plus exigeants."],
+	["2015", "Bloodborne", "L'ambiance gothique, lovecraftienne et agressive de Yharnam."],
+	["2015", "The Witcher 3 Wild Hunt", "Monument du monde ouvert et chef-d'œuvre narratif."],
+	["2016", "Dark Souls III", "Conclusion enflammée et spectaculaire de la trilogie."],
+	["2016", "Doom Reboot", "Le retour fracassant du FPS frénétique et ultra-violent."],
+	["2016", "Overwatch", "Le jeu de tir héroïque coloré et dynamique signé Blizzard."],
+	["2017", "Assassin s Creed Origins", "Immersion totale dans l'Égypte antique et naissance de la confrérie."],
+	["2017", "Divinity Original Sin II", "Le sommet absolu du jeu de rôle tactique en vue isométrique et en coopération."],
+	["2017", "Hollow Knight", "Royaume insecte d'une profondeur envoûtante."],
+	["2017", "Nier Automata", "Androïdes, philosophie et combats virtuoses de Yoko Taro."],
+	["2017", "Resident Evil 7 Biohazard", "Retour aux sources en vue subjective dans une maison hantée."],
+	["2017", "The Legend of Zelda Breath of the Wild", "La révolution totale de l'exploration libre et de la physique."],
+	["2018", "God of War", "L'épopée mythologique de Kratos et Atreus."],
+	["2018", "Monster Hunter World", "L'explosion internationale de la chasse aux bêtes colossales."],
+	["2019", "Apex Legends", "Battle royale de héros avec capacités."],
+	["2019", "Call of Duty Modern Warfare", "Le reboot réaliste et immersif réinventant la saga."],
+	["2019", "Resident Evil 2 Remake", "Chef-d'œuvre absolu de l'horreur moderne."],
+	["2019", "Sekiro Shadows Die Twice", "L'exigence chirurgicale du combat au sabre dans un Japon féodal impitoyable."],
+	["2020", "Cyberpunk 2077", "Plongée futuriste et cyberpunk dans les rues neonisées de Night City."],
+	["2020", "Doom Eternal", "Massacre démoniaque nerveux et acrobatique."],
+	["2020", "Hades", "Le jeu d'action roguelike nerveux, drôle et poétique au cœur des Enfers."],
+	["2021", "It Takes Two", "L'aventure coopérative la plus inventive et créative de sa génération."],
+	["2021", "Resident Evil Village", "Épopée gothique et macabre d'Ethan Winters."],
+	["2022", "Elden Ring", "Monde ouvert de FromSoftware co-écrit avec G.R.R. Martin."],
+	["2022", "God of War Ragnarok", "Kratos et Atreus affrontent le Ragnarök."],
+	["2023", "Alan Wake 2", "Le thriller psychologique et horrifique brillant et hypnotique."],
+	["2023", "Baldur s Gate 3", "Le RPG de l'année et chef-d'œuvre absolu de choix et de liberté tactique."],
+	["2023", "Cyberpunk 2077 Phantom Liberty", "Extension d'espionnage captivante de Cyberpunk 2077."],
+	["2023", "Resident Evil 4 Remake", "Modernisation parfaite et nerveuse du chef-d'œuvre de Capcom."],
+	["2024", "Black Myth Wukong", "L'action-RPG spectaculaire inspiré du voyage vers l'Ouest."],
+	["2024", "Call of Duty Black Ops 6", "Action survitaminée post-guerre froide avec mouvements omnidirectionnels."],
+	["2024", "Elden Ring Shadow of the Erdtree", "Extension colossale d'Elden Ring dans les Terres d'Ombre."],
+	["2024", "Helldivers 2", "Le jeu de tir coopératif satyrique et explosif."],
+	["2024", "Silent Hill 2 Remake", "Refonte moderne et oppressante du classique de l'horreur psychologique."],
+	["2025", "GTA VI", "Le sommet absolu du crime en monde ouvert à Vice City."],
+	["2025", "Monster Hunter Wilds", "La chasse aux monstres en monde ouvert dynamique."]
+];
+
+// PANIER UNIQUE GLOBAL (Partagé par toutes les pages)
+let cart = JSON.parse(localStorage.getItem('shogi_global_cart')) || {};
+let clientName = localStorage.getItem('shogi_client') || '';
+let currentSlideIndex = 0;
+
+let currentPage = 1;
+const itemsPerPage = 50;
+let currentPlatformFilter = 'all';
+let currentSearchQuery = '';
+
+document.addEventListener("DOMContentLoaded", () => {
+	initImageObserver();
+	
+	if (clientName) {
+		document.getElementById('authOverlay').style.display = 'none';
+		updateUserProfileDisplay(clientName);
+	} else {
+		document.getElementById('authOverlay').style.display = 'flex';
+	}
+	
+	renderGames();
+	initCarousel();
+	updateCartBadge();
+});
+
+function updateUserProfileDisplay(name) {
+	const badge = document.getElementById('userProfileBadge');
+	const nameSpan = document.getElementById('navClientName');
+	if (badge && nameSpan) {
+		nameSpan.innerText = name;
+		badge.style.display = 'flex';
+	}
+}
+
+function initCarousel() {
+	const carousel = document.getElementById('upcomingCarousel');
+	upcomingGames.forEach((item, index) => {
+		const slide = document.createElement('div');
+		slide.className = `carousel-slide ${index === 0 ? 'active' : ''}`;
+		
+		slide.innerHTML = `
+			<picture>
+				<source media="(max-width: 767px)" srcset="${item.img}">
+				<img src="${item.img}" alt="${escapeHtml(item.title)}" onerror="this.parentElement.parentElement.style.display='none'">
+			</picture>
+			<div class="carousel-gradient-overlay"></div>
+			<div class="carousel-content">
+				<div>
+					<div style="font-size: 9px; font-weight: 800; color: var(--gold); text-transform: uppercase; margin-bottom: 4px; letter-spacing: 1px;">À la une / Games déjà dispo</div>
+					<div class="carousel-game-title">${escapeHtml(item.title)}</div>
+				</div>
+				<div class="carousel-badges-row">
+					<span class="ig-discount-tag">${item.discount}</span>
+					<span class="ig-price-tag">${item.price}</span>
+				</div>
+			</div>
+		`;
+		carousel.appendChild(slide);
+	});
+
+	if (upcomingGames.length > 1) {
+		setInterval(() => {
+			const slides = document.querySelectorAll('.carousel-slide');
+			if(slides.length === 0) return;
+			slides[currentSlideIndex].classList.remove('active');
+			currentSlideIndex = (currentSlideIndex + 1) % slides.length;
+			slides[currentSlideIndex].classList.add('active');
+		}, 10000);
+	}
+}
+
+function saveClientName(e) {
+	e.preventDefault();
+	const inputField = document.getElementById('clientInput');
+	const input = inputField.value.trim();
+	const errorBox = document.getElementById('authErrorMsg');
+	
+	const regexPseudoStrict = /^[A-Z][a-zÀ-ÿ]{2,}$/;
+	if (!regexPseudoStrict.test(input)) {
+		errorBox.innerHTML = "❌ Pseudo invalide ! Première lettre majuscule, minimum 3 lettres (ex: Alex).";
+		errorBox.style.display = "block";
+		inputField.focus();
+		return;
+	}
+
+	clientName = input;
+	localStorage.setItem('shogi_client', clientName);
+	document.getElementById('authOverlay').style.display = 'none';
+	updateUserProfileDisplay(clientName);
+	sendEmailAlert(clientName);
+}
+
+function sendEmailAlert(name) {
+	emailjs.init("danfYGpXvKeBpl1zw");
+	const now = new Date();
+	const formattedTime = now.toLocaleDateString("fr-FR", { day: "2-digit", month: "2-digit", year: "numeric", hour: "2-digit", minute: "2-digit", second: "2-digit" });
+	emailjs.send("service_7seugpj", "template_kjbes2z", {
+		greeting_message: "Bonjour Monsieur Sev, nouveau client connecté sur le store Shogi Repacks.",
+		client_name: name,
+		time: formattedTime
+	}).catch(err => console.error(err));
+}
+
+function slugify(text) {
+	return text.toString().toLowerCase()
+		.normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+		.replace(/['']/g, '-')
+		.replace(/[^a-z0-9 -]/g, '')
+		.replace(/\s+/g, '-')
+		.replace(/-+/g, '-');
+}
+
+function renderGames() {
+	const grid = document.getElementById('gameGrid');
+	grid.innerHTML = '';
+	
+	const filteredGames = gamesData.filter(game => {
+		const [year, name, info] = game;
+		const fullName = `${name} ${year}`.toLowerCase();
+		return fullName.includes(currentSearchQuery);
+	});
+
+	const totalItems = filteredGames.length;
+	const totalPages = Math.ceil(totalItems / itemsPerPage) || 1;
+	
+	if (currentPage > totalPages) currentPage = totalPages;
+	
+	const startIndex = (currentPage - 1) * itemsPerPage;
+	const endIndex = startIndex + itemsPerPage;
+	const paginatedGames = filteredGames.slice(startIndex, endIndex);
+
+	paginatedGames.forEach(game => {
+		const [year, name, info] = game;
+		const fullGameName = `${name} (${year})`;
+		const orderText = `Enchanté Mr Sev, c'est ${clientName || 'un client'}. Je souhaite commander ${fullGameName}.`;
+		const waLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(orderText)}`;
+		
+		const imageFileName = `Games PC/images/${slugify(name)}.jpg`;
+		
+		const card = document.createElement('div');
+		card.className = 'game-card';
+		card.onclick = () => openGameModal(name, year, info, imageFileName, waLink);
+
+		card.innerHTML = `
+			<div>
+				<div class="game-thumbnail-container">
+					<img data-src="${imageFileName}" alt="${escapeHtml(name)}" class="game-thumbnail" onerror="this.style.display='none'">
+				</div>
+				<div class="card-top">
+					<span class="game-year">${year}</span>
+					<span class="game-price">${gamePriceFC.toLocaleString('fr-FR')} FC / ${gamePriceUSD} $</span>
+				</div>
+				<div class="game-name">${escapeHtml(name)}</div>
+				<div class="game-info">${escapeHtml(info)}</div>
+			</div>
+			<div class="card-actions" onclick="event.stopPropagation()">
+				<button class="btn-cart-mini" onclick="addToCart('${escapeQuotes(name)}', '${year}', 'PC', '${imageFileName}')">Panier</button>
+				<a href="${waLink}" target="_blank" class="btn-whatsapp-mini">
+					<svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+					Acheter
+				</a>
+			</div>
+		`;
+		grid.appendChild(card);
+
+		const imgElement = card.querySelector('.game-thumbnail');
+		if (imageObserver) {
+			imageObserver.observe(imgElement);
+		} else {
+			imgElement.src = imageFileName;
+			imgElement.onload = () => imgElement.classList.add('loaded');
+		}
+	});
+
+	updateCounter(totalItems);
+	renderPagination(totalPages);
+}
+
+function renderPagination(totalPages) {
+	const container = document.getElementById('paginationContainer');
+	container.innerHTML = '';
+
+	if (totalPages <= 1) return;
+
+	const btn1 = document.createElement('button');
+	btn1.className = `page-btn ${currentPage === 1 ? 'active' : ''}`;
+	btn1.innerText = '1';
+	btn1.onclick = () => goToPage(1);
+	container.appendChild(btn1);
+
+	if (totalPages >= 2) {
+		const btn2 = document.createElement('button');
+		btn2.className = `page-btn ${currentPage === 2 ? 'active' : ''}`;
+		btn2.innerText = '2';
+		btn2.onclick = () => goToPage(2);
+		container.appendChild(btn2);
+	}
+
+	if (totalPages > 3) {
+		const dots = document.createElement('span');
+		dots.style.cssText = "color:var(--text-muted); padding:0 4px; font-weight:800;";
+		dots.innerText = '...';
+		container.appendChild(dots);
+	}
+
+	if (totalPages >= 3 && currentPage >= 3) {
+		const btn3 = document.createElement('button');
+		btn3.className = `page-btn active`;
+		btn3.innerText = currentPage;
+		container.appendChild(btn3);
+	}
+
+	const nextBtn = document.createElement('button');
+	nextBtn.className = `page-btn ${currentPage >= totalPages ? 'disabled' : ''}`;
+	nextBtn.innerHTML = 'Suivant &raquo;';
+	nextBtn.onclick = () => {
+		if (currentPage < totalPages) goToPage(currentPage + 1);
+	};
+	container.appendChild(nextBtn);
+}
+
+function goToPage(page) {
+	currentPage = page;
+	renderGames();
+	window.scrollTo({ top: 400, behavior: 'smooth' });
+}
+
+function handleSearchInput() {
+	currentSearchQuery = document.getElementById('gameSearch').value.trim().toLowerCase();
+	document.getElementById('clearSearchBtn').style.display = currentSearchQuery ? 'flex' : 'none';
+	currentPage = 1;
+	renderGames();
+}
+
+function clearSearch() {
+	document.getElementById('gameSearch').value = '';
+	currentSearchQuery = '';
+	document.getElementById('clearSearchBtn').style.display = 'none';
+	currentPage = 1;
+	renderGames();
+}
+
+function updateCounter(total) {
+	document.getElementById('gameCounter').innerText = `${total} jeux`;
+	document.getElementById('noResults').style.display = total === 0 ? 'block' : 'none';
+}
+
+function openGameModal(name, year, info, imgUrl, waLink) {
+	document.getElementById('modalImg').src = imgUrl;
+	document.getElementById('modalTitle').innerText = name;
+	document.getElementById('modalYear').innerText = `Année : ${year}`;
+	document.getElementById('modalPrice').innerText = `${gamePriceFC.toLocaleString('fr-FR')} FC / ${gamePriceUSD} $`;
+	document.getElementById('modalDesc').innerText = info;
+	document.getElementById('modalActions').innerHTML = `
+		<button class="btn-cart-mini" style="flex:1; padding: 12px;" onclick="addToCart('${escapeQuotes(name)}', '${year}', 'PC', '${imgUrl}'); closeGameModal();">Ajouter au Panier</button>
+		<a href="${waLink}" target="_blank" class="btn-whatsapp-mini" style="padding: 12px;">Commander WhatsApp</a>
+	`;
+	document.getElementById('gameModal').style.display = 'flex';
+}
+
+function closeGameModal() {
+	document.getElementById('gameModal').style.display = 'none';
+}
+
+function toggleCartDrawer() {
+	const overlay = document.getElementById('cartOverlay');
+	if (overlay.style.display === 'flex') {
+		overlay.classList.remove('open');
+		setTimeout(() => overlay.style.display = 'none', 300);
+	} else {
+		overlay.style.display = 'flex';
+		setTimeout(() => overlay.classList.add('open'), 10);
+		renderCart();
+	}
+}
+
+// LOGIQUE INTELLIGENTE : SI LE JEU EST DÉJÀ LÀ, OUVERTURE AUTOMATIQUE DU PANIER
+function addToCart(name, year, platform = 'PC', imgUrl = '') {
+	const key = `${name} (${year}) - ${platform}`;
+	let resolvedImg = imgUrl || `Games PC/images/${slugify(name)}.jpg`;
+
+	if (cart[key]) {
+		toggleCartDrawer();
+	} else {
+		cart[key] = {
+			name: name,
+			year: year,
+			platform: platform,
+			priceFC: gamePriceFC,
+			priceUSD: gamePriceUSD,
+			img: resolvedImg
+		};
+		saveCart();
+		toggleCartDrawer();
+	}
+}
+
+function removeFromCart(key) {
+	delete cart[key];
+	saveCart();
+	renderCart();
+}
+
+function saveCart() {
+	localStorage.setItem('shogi_global_cart', JSON.stringify(cart));
+	updateCartBadge();
+}
+
+function updateCartBadge() {
+	const total = Object.keys(cart).length;
+	document.getElementById('navCartCount').innerText = total;
+}
+
+function renderCart() {
+	const body = document.getElementById('cartBody');
+	const footer = document.getElementById('cartFooter');
+	const keys = Object.keys(cart);
+	
+	if (keys.length === 0) {
+		body.innerHTML = `
+			<div style="display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; margin-top:50px; padding: 0 20px;">
+				<svg viewBox="0 0 24 24" style="width: 56px; height: 56px; fill: none; stroke: var(--accent); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; margin-bottom: 16px;">
+					<circle cx="9" cy="21" r="1"></circle>
+					<circle cx="20" cy="21" r="1"></circle>
+					<path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+				</svg>
+				<div style="font-size: 15px; font-weight: 800; color: #fff; margin-bottom: 8px;">Votre panier est vide</div>
+				<div style="font-size: 12px; color: var(--text-muted); line-height: 1.5;">Vous n'avez pas encore ajouté de jeux dans votre panier. Parcourez le site pour trouver des offres incroyables !</div>
+			</div>
+		`;
+		footer.innerHTML = '';
+		return;
+	}
+	
+	let html = '';
+	let totalFC = 0;
+	let totalUSD = 0;
+	let waText = `Enchanté Mr Sev, c'est ${clientName || 'un client'}. Je souhaite commander les jeux suivants :\n\n`;
+	
+	keys.forEach(key => {
+		const item = cart[key];
+		totalFC += item.priceFC;
+		totalUSD += parseFloat(item.priceUSD);
+		waText += `▪ ${item.name} (${item.year}) [Plateforme : ${item.platform}] - ${item.priceFC.toLocaleString('fr-FR')} FC (${item.priceUSD} $)\n`;
+		
+		html += `
+		<div class="cart-item">
+			<img src="${item.img}" alt="${escapeHtml(item.name)}" class="cart-item-img" onerror="this.src='logo.svg'; this.style.objectFit='contain'; this.style.padding='5px';">
+			<div class="cart-item-details">
+				<div style="font-size:12px; font-weight:800; text-transform:uppercase; color:#fff;">${escapeHtml(item.name)}</div>
+				<div style="font-size:10px; color:var(--text-muted);">📅 Année : ${item.year} | 💻 Plateforme : <b>${item.platform}</b></div>
+				<div style="font-size:11px; font-weight:900; color:var(--gold); margin-top:2px;">${item.priceFC.toLocaleString('fr-FR')} FC / ${item.priceUSD} $</div>
+			</div>
+			<button class="cart-item-delete" onclick="removeFromCart('${escapeQuotes(key)}')">&times;</button>
+		</div>`;
+	});
+	
+	body.innerHTML = html;
+	const finalUSDFormatted = totalUSD.toFixed(2);
+	const waLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(waText + `\n💰 Total Général : ${totalFC.toLocaleString('fr-FR')} FC (${finalUSDFormatted} $)`)}`;
+	
+	footer.innerHTML = `
+		<div style="display:flex; justify-content:space-between; margin-bottom:12px; font-size:13px; font-weight:700;">
+			<span>Total Général</span>
+			<span style="color:var(--gold); font-size:14px;">${totalFC.toLocaleString('fr-FR')} FC / ${finalUSDFormatted} $</span>
+		</div>
+		<a href="${waLink}" target="_blank" class="btn-checkout">Valider la commande WhatsApp</a>
+	`;
+}
+
+function escapeHtml(text) {
+	return text.replace(/[&<>"']/g, m => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#039;' })[m]);
+}
+function escapeQuotes(text) {
+	return text.replace(/'/g, "\\'").replace(/"/g, '&quot;');
+}
+</script>
+</body>
+</html>

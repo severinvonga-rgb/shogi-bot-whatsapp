@@ -1,0 +1,2164 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<title>Shogi-repacks.com - Games PC</title>
+<link rel="icon" type="image/svg+xml" href="../logo.svg">
+<style>
+:root {
+	--bg-main: #0b0c10;
+	--card-bg: #14161f;
+	--card-hover: #1c1f2b;
+	--accent: #ff5500;
+	--accent-hover: #ff7324;
+	--accent-glow: rgba(255, 85, 0, 0.35);
+	--gold: #f5a623;
+	--gold-glow: rgba(245, 166, 35, 0.25);
+	--whatsapp: #25D366;
+	--whatsapp-hover: #20ba5a;
+	--border-glass: rgba(255, 255, 255, 0.08);
+	--border-glow: rgba(255, 85, 0, 0.4);
+	--text-main: #ffffff;
+	--text-muted: #94969e;
+}
+
+* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+body {
+	margin: 0;
+	background: var(--bg-main);
+	color: var(--text-main);
+	font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+	min-height: 100vh;
+	-webkit-font-smoothing: antialiased;
+	overflow-x: hidden;
+	-webkit-user-select: none;
+	user-select: none;
+}
+
+/* NAVBAR TOP */
+.ig-navbar {
+	background: #111319;
+	border-bottom: 1px solid var(--border-glass);
+	padding: 10px 16px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	position: sticky;
+	top: 0;
+	z-index: 1000;
+}
+
+.ig-brand {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	text-decoration: none;
+}
+
+.ig-brand-logo {
+	width: 44px; 
+	height: 44px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	filter: drop-shadow(0 0 8px rgba(255, 85, 0, 0.4));
+}
+
+.ig-brand-logo img { 
+	width: 100%; 
+	height: 100%; 
+	object-fit: contain;
+	image-rendering: -webkit-optimize-contrast;
+}
+
+.ig-brand-text {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.brand-title-main {
+	font-family: 'Inter', system-ui, -apple-system, sans-serif;
+	font-size: 15px;
+	font-weight: 700;
+	letter-spacing: 1.8px;
+	color: #ffffff;
+	line-height: 1.1;
+	text-transform: uppercase;
+}
+
+.brand-title-sub {
+	font-family: 'Inter', system-ui, -apple-system, sans-serif;
+	font-size: 14px;
+	font-weight: 700;
+	letter-spacing: 2px;
+	color: var(--accent);
+	line-height: 1.1;
+	text-transform: uppercase;
+}
+
+.ig-nav-actions {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+
+/* BLOC USER PROFILE NAV */
+.user-profile-badge {
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	background: rgba(255, 255, 255, 0.05);
+	border: 1px solid var(--border-glass);
+	padding: 6px 12px;
+	border-radius: 10px;
+	font-size: 12px;
+	font-weight: 800;
+	color: #fff;
+}
+
+.user-profile-badge img {
+	width: 18px;
+	height: 18px;
+	object-fit: contain;
+}
+
+/* BOUTON PANIER */
+.ig-icon-btn {
+	background: rgba(255, 255, 255, 0.08);
+	border: 1px solid var(--border-glass);
+	color: #fff;
+	padding: 8px 12px;
+	border-radius: 10px;
+	font-size: 13px;
+	font-weight: 700;
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	cursor: pointer;
+	transition: all 0.2s;
+}
+.ig-icon-btn:hover { background: rgba(255, 255, 255, 0.15); }
+
+.ig-cart-icon-img {
+	width: 20px;
+	height: 20px;
+	object-fit: contain;
+}
+
+.ig-cart-badge {
+	background: var(--gold);
+	color: #000;
+	font-size: 11px;
+	padding: 1px 6px;
+	border-radius: 6px;
+	font-weight: 900;
+}
+
+/* BARRE DES PLATEFORMES (STICKY) */
+.platforms-bar {
+	display: flex;
+	gap: 8px;
+	padding: 12px 16px;
+	background: rgba(17, 19, 25, 0.95);
+	backdrop-filter: blur(10px);
+	overflow-x: auto;
+	border-bottom: 1px solid var(--border-glass);
+	scrollbar-width: none;
+	position: sticky;
+	top: 65px;
+	z-index: 990;
+}
+.platforms-bar::-webkit-scrollbar { display: none; }
+
+.platform-pill {
+	background: rgba(255, 255, 255, 0.05);
+	border: 1px solid var(--border-glass);
+	color: var(--text-muted);
+	padding: 6px 14px;
+	border-radius: 20px;
+	font-size: 12px;
+	font-weight: 700;
+	white-space: nowrap;
+	cursor: pointer;
+	transition: all 0.2s;
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	text-decoration: none;
+}
+.platform-pill:hover, .platform-pill.active {
+	background: rgba(255, 85, 0, 0.15);
+	color: #fff;
+	border-color: var(--accent);
+}
+
+.container { 
+	max-width: 1200px; 
+	margin: 0 auto; 
+	padding: 16px; 
+}
+
+/* BARRE DE RECHERCHE PRO */
+.search-section {
+	margin-bottom: 24px;
+}
+.search-box-container { 
+	position: relative; 
+	width: 100%; 
+	display: flex;
+	align-items: center;
+}
+
+#gameSearch {
+	width: 100%;
+	padding: 14px 40px 14px 45px;
+	background: var(--card-bg);
+	border: 1px solid var(--border-glass);
+	border-radius: 14px;
+	color: #ffffff; 
+	font-size: 14px;
+	outline: none; 
+	transition: all 0.2s ease;
+}
+#gameSearch:focus {
+	border-color: var(--accent);
+	background: var(--card-hover);
+}
+
+.search-icon {
+	position: absolute;
+	left: 15px;
+	width: 18px; height: 18px;
+	fill: var(--text-muted);
+}
+
+.clear-search-btn {
+	position: absolute;
+	right: 14px;
+	background: rgba(255, 255, 255, 0.08);
+	border: none;
+	color: var(--text-muted);
+	width: 24px; height: 24px;
+	border-radius: 50%;
+	display: none;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	font-size: 14px;
+}
+
+.section-title {
+	font-size: 15px;
+	text-transform: uppercase;
+	font-weight: 900;
+	letter-spacing: 1px;
+	margin-bottom: 14px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+.section-title span { color: var(--accent); font-size: 12px; }
+
+/* GRILLE DE JEUX UNIVERSELLE */
+.game-grid {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 12px;
+}
+@media (min-width: 576px) {
+	.game-grid { grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 16px; }
+}
+@media (min-width: 992px) {
+	.game-grid { grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 20px; }
+}
+
+.game-card {
+	background: var(--card-bg);
+	border: 1px solid var(--border-glass);
+	border-radius: 14px;
+	padding: 10px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+	transition: transform 0.25s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.25s;
+	cursor: pointer;
+	will-change: transform;
+}
+.game-card:hover {
+	transform: translateY(-3px);
+	border-color: var(--border-glow);
+}
+
+.game-thumbnail-container {
+	width: 100%;
+	height: 110px;
+	border-radius: 10px;
+	overflow: hidden;
+	margin-bottom: 8px;
+	background: #0d0f17;
+	position: relative;
+}
+@media (min-width: 768px) {
+	.game-thumbnail-container { height: 130px; }
+}
+
+.game-thumbnail {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	object-position: center;
+	image-rendering: -webkit-optimize-contrast;
+	opacity: 0;
+	transition: opacity 0.4s ease-in-out;
+}
+.game-thumbnail.loaded { opacity: 1; }
+
+.card-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
+.game-year { 
+	color: var(--accent); 
+	font-weight: 800; 
+	font-size: 9px; 
+	background: rgba(255, 85, 0, 0.1);
+	padding: 3px 6px;
+	border-radius: 4px;
+}
+.game-price {
+	color: #000;
+	font-weight: 900;
+	font-size: 10px;
+	background: var(--gold);
+	padding: 3px 8px;
+	border-radius: 4px;
+}
+
+.game-name { 
+	font-size: 12px; 
+	font-weight: 800; 
+	text-transform: uppercase; 
+	line-height: 1.2;
+	margin-bottom: 4px;
+	color: #fff;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+}
+@media(min-width: 768px) { .game-name { font-size: 13px; } }
+
+.game-info {
+	font-size: 10px;
+	color: var(--text-muted);
+	margin-bottom: 10px;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+}
+
+.card-actions {
+	display: flex;
+	gap: 6px;
+}
+
+.btn-whatsapp-mini {
+	background: var(--whatsapp);
+	color: white;
+	border: none;
+	padding: 8px;
+	border-radius: 8px;
+	font-size: 10px;
+	font-weight: 800;
+	text-decoration: none;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex: 1;
+}
+.btn-whatsapp-mini svg { width: 12px; height: 12px; fill: #fff; }
+
+.btn-cart-mini {
+	background: rgba(255, 255, 255, 0.08);
+	border: 1px solid var(--border-glass);
+	color: white;
+	padding: 8px;
+	border-radius: 8px;
+	font-size: 10px;
+	font-weight: 800;
+	cursor: pointer;
+}
+.btn-cart-mini:hover { background: var(--accent); border-color: var(--accent); }
+
+/* PAGINATION PRO STYLE */
+.pagination-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 8px;
+	margin: 30px 0 20px 0;
+}
+
+.page-btn {
+	background: var(--card-bg);
+	border: 1px solid var(--border-glass);
+	color: var(--text-muted);
+	min-width: 38px;
+	height: 38px;
+	padding: 0 10px;
+	border-radius: 10px;
+	font-weight: 800;
+	font-size: 13px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	transition: all 0.2s;
+}
+
+.page-btn:hover {
+	border-color: var(--accent);
+	color: #fff;
+}
+
+.page-btn.active {
+	background: var(--accent);
+	color: #fff;
+	border-color: var(--accent);
+	box-shadow: 0 0 12px var(--accent-glow);
+}
+
+.page-btn.disabled {
+	opacity: 0.4;
+	cursor: not-allowed;
+	pointer-events: none;
+}
+
+/* MODALE DÉTAILS JEU */
+.modal-overlay {
+	position: fixed;
+	top: 0; left: 0; width: 100%; height: 100%;
+	background: rgba(0, 0, 0, 0.85);
+	backdrop-filter: blur(10px);
+	z-index: 2000;
+	display: none;
+	justify-content: center;
+	align-items: center;
+	padding: 16px;
+}
+.modal-card {
+	background: var(--card-bg);
+	border: 1px solid var(--border-glass);
+	border-radius: 16px;
+	max-width: 500px;
+	width: 100%;
+	max-height: 90vh;
+	overflow-y: auto;
+	padding: 20px;
+	position: relative;
+}
+.modal-close-btn {
+	position: absolute; top: 12px; right: 12px;
+	background: rgba(255,255,255,0.1); border: none; color: #fff;
+	width: 28px; height: 28px; border-radius: 50%; cursor: pointer;
+}
+.modal-hero-img { width: 100%; height: 180px; object-fit: cover; border-radius: 10px; margin-bottom: 12px; image-rendering: -webkit-optimize-contrast; }
+
+/* PANIER COULISSANT TRANSPARENT */
+.cart-drawer-overlay {
+	position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+	background: rgba(11, 12, 16, 0.6); backdrop-filter: blur(6px);
+	z-index: 3000; display: none; justify-content: flex-end;
+}
+.cart-drawer {
+	width: 100%; max-width: 400px; height: 100%;
+	background: rgba(17, 19, 25, 0.85); backdrop-filter: blur(16px);
+	border-left: 1px solid var(--border-glass);
+	display: flex; flex-direction: column;
+	transform: translateX(100%); transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+	box-shadow: -10px 0 30px rgba(0,0,0,0.5);
+}
+.cart-drawer-overlay.open .cart-drawer { transform: translateX(0); }
+
+.cart-header { padding: 18px; border-bottom: 1px solid var(--border-glass); display: flex; justify-content: space-between; align-items: center; background: rgba(20, 22, 31, 0.5); }
+.cart-body { padding: 16px; flex-grow: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; }
+.cart-item { background: rgba(20, 22, 31, 0.6); border: 1px solid var(--border-glass); border-radius: 10px; padding: 10px; display: flex; align-items: center; gap: 12px; position: relative; backdrop-filter: blur(4px); }
+.cart-item-img { width: 50px; height: 50px; border-radius: 8px; object-fit: cover; background: #0d0f17; flex-shrink: 0; }
+.cart-item-details { flex-grow: 1; display: flex; flex-direction: column; gap: 2px; }
+.cart-item-delete { background: rgba(255, 69, 58, 0.2); border: none; color: #ff453a; width: 24px; height: 24px; border-radius: 50%; cursor: pointer; font-size: 14px; display: flex; align-items: center; justify-content: center; }
+
+.cart-footer { padding: 18px; border-top: 1px solid var(--border-glass); background: rgba(20, 22, 31, 0.8); backdrop-filter: blur(8px); }
+
+.btn-checkout {
+	background: var(--whatsapp); color: #fff; border: none; width: 100%;
+	padding: 14px; border-radius: 12px; font-weight: 900; font-size: 12px;
+	text-transform: uppercase; cursor: pointer; text-decoration: none; display: block; text-align: center;
+	transition: background 0.2s;
+}
+.btn-checkout:hover { background: var(--whatsapp-hover); }
+
+.no-results { grid-column: 1 / -1; text-align: center; padding: 40px; color: var(--text-muted); display: none; font-size: 13px; }
+</style>
+</head>
+<body>
+
+<!-- NAVBAR TOP -->
+<div class="ig-navbar">
+	<a href="../index.html" class="ig-brand">
+		<div class="ig-brand-logo">
+			<img src="../logo.svg" alt="Shogi Repacks Logo">
+		</div>
+		<div class="ig-brand-text">
+			<span class="brand-title-main">SHOGI</span>
+			<span class="brand-title-sub">GAMES PC</span>
+		</div>
+	</a>
+	<div class="ig-nav-actions">
+		<!-- PROFIL CLIENT -->
+		<div class="user-profile-badge" id="userProfileBadge" style="display: none;">
+			<img src="../icon-avatar.svg" alt="Avatar">
+			<span id="navClientName">Client</span>
+		</div>
+		
+		<!-- BOUTON PANIER -->
+		<button class="ig-icon-btn" onclick="toggleCartDrawer()">
+			<img src="../icon-avatar2.svg" alt="Panier" class="ig-cart-icon-img">
+			<span class="ig-cart-badge" id="navCartCount">0</span>
+		</button>
+	</div>
+</div>
+
+<!-- BARRE DE PLATEFORMES (STICKY) -->
+<div class="platforms-bar">
+	<div class="platform-pill" onclick="window.location.href='../index.html'">🔥 Accueil / Tous</div>
+	<div class="platform-pill active" onclick="window.location.href='games-pc.html'">Games PC</div>
+	<div class="platform-pill" onclick="window.location.href='../Games Android/games-android.html'">Games Android</div>
+	<div class="platform-pill" onclick="window.location.href='../Système Windows/syst-win.html'">Système Windows</div>
+</div>
+
+<div class="container">
+
+	<!-- BARRE DE RECHERCHE PRO -->
+	<div class="search-section">
+		<div class="search-box-container">
+			<input type="text" id="gameSearch" placeholder="Rechercher un jeu PC..." oninput="handleSearchInput()">
+			<svg class="search-icon" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+			<button class="clear-search-btn" id="clearSearchBtn" onclick="clearSearch()">&times;</button>
+		</div>
+	</div>
+
+	<div class="section-title">
+		Catalogue Exclusif Games PC <span id="gameCounter">0 jeux</span>
+	</div>
+
+	<div class="game-grid" id="pcGameGrid"></div>
+	<div class="no-results" id="noResults">Aucun jeu ne correspond à votre recherche.</div>
+
+	<!-- CONTENEUR DE PAGINATION PRO -->
+	<div class="pagination-container" id="paginationContainer"></div>
+
+</div>
+
+<!-- MODALE DÉTAILS DU JEU -->
+<div class="modal-overlay" id="gameModal" onclick="closeGameModal()">
+	<div class="modal-card" onclick="event.stopPropagation()">
+		<button class="modal-close-btn" onclick="closeGameModal()">&times;</button>
+		<img src="" alt="" class="modal-hero-img" id="modalImg">
+		<h2 style="font-size: 16px; text-transform: uppercase; margin: 0 0 8px 0;" id="modalTitle"></h2>
+		<div style="display: flex; gap: 8px; margin-bottom: 12px;">
+			<span class="game-year" id="modalYear"></span>
+			<span class="game-price" id="modalPrice"></span>
+		</div>
+		<p style="font-size: 12px; color: var(--text-muted); line-height: 1.5; margin-bottom: 20px;" id="modalDesc"></p>
+		<div style="display: flex; gap: 8px;" id="modalActions"></div>
+	</div>
+</div>
+
+<!-- SIDEBAR PANIER -->
+<div class="cart-drawer-overlay" id="cartOverlay" onclick="toggleCartDrawer()">
+	<div class="cart-drawer" onclick="event.stopPropagation()">
+		<div class="cart-header">
+			<h3 style="margin: 0; font-size: 14px; text-transform: uppercase;">Votre panier</h3>
+			<button style="background:none; border:none; color:#fff; font-size:18px; cursor:pointer;" onclick="toggleCartDrawer()">&times;</button>
+		</div>
+		<div class="cart-body" id="cartBody"></div>
+		<div class="cart-footer" id="cartFooter"></div>
+	</div>
+</div>
+
+<script>
+(function initAdaptiveResolution() {
+	const dpr = window.devicePixelRatio || 1;
+	const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+	document.documentElement.style.setProperty('--vh-scale', `${window.innerHeight * 0.01}px`);
+	if (isMobile && dpr > 1) { document.body.classList.add('high-density-mobile'); }
+	window.addEventListener('resize', () => {
+		document.documentElement.style.setProperty('--vh-scale', `${window.innerHeight * 0.01}px`);
+	});
+})();
+
+let imageObserver = null;
+function initImageObserver() {
+	if ('IntersectionObserver' in window) {
+		imageObserver = new IntersectionObserver((entries, observer) => {
+			entries.forEach(entry => {
+				if (entry.isIntersecting) {
+					const img = entry.target;
+					const realSrc = img.getAttribute('data-src');
+					if (realSrc) {
+						img.src = realSrc;
+						img.onload = () => img.classList.add('loaded');
+						img.removeAttribute('data-src');
+					}
+					observer.unobserve(img);
+				}
+			});
+		}, { root: null, rootMargin: '100px 0px', threshold: 0.01 });
+	}
+}
+
+const whatsappNumber = "243854167858";
+const gamePriceFC = 40000;
+const exchangeRateUSD = 2800;
+const gamePriceUSD = (gamePriceFC / exchangeRateUSD).toFixed(2);
+
+let cart = JSON.parse(localStorage.getItem('shogi_global_cart')) || {};
+let clientName = localStorage.getItem('shogi_client') || '';
+
+let currentPage = 1;
+const itemsPerPage = 50;
+let currentSearchQuery = '';
+
+const pcGamesData = [
+	["2000", "Baldur s Gate II Shadows of Amn", "Sommet du RPG tactique de Donjons et Dragons."],
+	["2000", "Command & Conquer Red Alert 2", "Soviétiques contre Alliés dans une uchronie camp."],
+	["2000", "Counter-Strike", "FPS tactique en équipe, terroristes contre forces spéciales."],
+	["2000", "Deus Ex", "Cyberpunk et complots mondiaux avec liberté d'approche exemplaire."],
+	["2000", "Diablo II", "La quintessence du jeu de rôle d'action, du loot et de la chasse aux démons dans les ténèbres."],
+	["2000", "Emperor Battle for Dune", "Guerre de maisons sur Arrakis."],
+	["2000", "Ground Control", "RTS tactique en 3D sans construction de base."],
+	["2000", "Hitman Codename 47", "Débuts de l'agent 47 et de l'assassinat en bac à sable."],
+	["2000", "Icewind Dale Heart of Winter", "Extension avec de nouveaux défis glaciaux."],
+	["2000", "Icewind Dale", "Aventure de donjons classique et exigeante sur fond de neige éternelle."],
+	["2000", "No One Lives Forever", "Espionnage pop et humour des années 60."],
+	["2000", "Resident Evil Code Veronica", "Évasion de l'île pénitentiaire et révélations sur Umbrella."],
+	["2000", "Shogun Total War", "Stratégie en temps réel dans le Japon féodal."],
+	["2000", "Soldier of Fortune", "FPS de mercenaires à la violence très réaliste."],
+	["2000", "Summoner", "Lien magique et exploration de fantasy."],
+	["2000", "The Legend of Zelda Majora s Mask", "L'aventure mélancolique et oppressante sous la menace d'une lune menaçante."],
+	["2000", "The Sims", "La simulation de vie quotidienne et de gestion architecturale la plus vendue de l'histoire."],
+	["2001", "Arcanum Of Steamworks and Magick Obscura", "Fantasy et révolution industrielle en RPG ouvert."],
+	["2001", "Black and White", "Jeu de dieu et créature à éduquer."],
+	["2001", "Civilization III", "Empire, culture et diplomatie."],
+	["2001", "Europa Universalis II", "Grande stratégie de l'Europe moderne."],
+	["2001", "Final Fantasy IX PC", "Retour aux sources dans un monde de conte."],
+	["2001", "Final Fantasy X", "L'émouvante histoire de Tidus et Yuna dans le monde menacé de Spira."],
+	["2001", "Gothic", "Colonie pénitentiaire sous cloche magique et monde ouvert rugueux."],
+	["2001", "Halo Combat Evolved", "L'introduction légendaire du Master Chief sur un anneau mystérieux et la révolution du FPS console."],
+	["2001", "Majesty The Fantasy Kingdom Sim", "Royaume de fantasy aux héros autonomes."],
+	["2001", "Max Payne", "Thriller noir et Bullet Time dans un New York enneigé."],
+	["2001", "Operation Flashpoint Cold War Crisis", "Simulation militaire ouverte et réaliste."],
+	["2001", "Operation Flashpoint", "Guerre simulée en terrain ouvert."],
+	["2001", "Red Faction", "Destruction de décors sur Mars en FPS."],
+	["2001", "Return to Castle Wolfenstein", "FPS de la Seconde Guerre mondiale et du surnaturel."],
+	["2001", "Rune", "Action de Vikings et de mythes nordiques."],
+	["2001", "Serious Sam The First Encounter", "Horde de monstres et FPS à l'ancienne déchaîné."],
+	["2001", "Tropico", "Dictateur d'île des Caraïbes et gestion."],
+	["2001", "Zoo Tycoon", "Gestion de zoo et de ses animaux."],
+	["2002", "Age of Mythology", "Dieux et créatures dans un RTS mythologique."],
+	["2002", "Anno 1503", "Colonisation, commerce et gestion de l'île."],
+	["2002", "Baldur s Gate Dark Alliance", "Hack and slash de Donjons et Dragons."],
+	["2002", "Battlefield 1942", "Guerre totale en ligne avec véhicules."],
+	["2002", "Dungeon Siege", "Hack and slash sans chargement avec groupe de héros."],
+	["2002", "Eternal Lands", "MMO de fantasy à la communauté fidèle."],
+	["2002", "Gothic II", "Retour dans la vallée de Khorinis, monde ouvert dense et sans pitié."],
+	["2002", "Hearts of Iron", "Grande stratégie de la Seconde Guerre mondiale."],
+	["2002", "Hitman 2 Silent Assassin", "Niveaux ouverts et déguisements inventifs."],
+	["2002", "Icewind Dale II", "Suite tactique aux combats de groupe exigeants."],
+	["2002", "Impossible Creatures", "Fusion d'animaux en armées hybrides."],
+	["2002", "Lineage II", "MMO coréen de fantasy aux grands sièges."],
+	["2002", "Medal of Honor Allied Assault", "Débarquement de Normandie en FPS spectaculaire."],
+	["2002", "Medieval Total War", "Guerre médiévale à travers l'Europe."],
+	["2002", "Metroid Prime", "La transition magistrale de la série en FPS d'exploration spatiale."],
+	["2002", "Neverwinter Nights", "Moteur de création de campagnes et RPG D&D en coopération."],
+	["2002", "No One Lives Forever 2", "Suite de l'espionnage déjanté de Cate Archer."],
+	["2002", "Resident Evil Remake", "Version ultime et terrifiante du premier volet graphiquement modernisée."],
+	["2002", "Resident Evil Zero", "Prélude coopératif dans un train contaminé."],
+	["2002", "RollerCoaster Tycoon 2", "Suite aux nouveaux thèmes et attractions."],
+	["2002", "RuneScape", "MMO en navigateur de quêtes et de compétences."],
+	["2002", "Splinter Cell", "Sam Fisher et infiltration dans l'ombre."],
+	["2002", "Syberia", "Odyssée d'une notaire dans l'Europe de l'automate."],
+	["2002", "The Elder Scrolls III Morrowind", "Fantasy étrange et dépaysante sur l'île de Vvardenfell."],
+	["2002", "Tribes 2", "FPS d'équipe aux armures volantes."],
+	["2002", "Unreal Tournament 2003", "Arène rapide et explosive en ligne."],
+	["2002", "Warcraft III Reign of Chaos", "Le chef-d'œuvre de stratégie en temps réel qui a enfanté le genre des MOBA."],
+	["2003", "Battlefield Vietnam", "Guerre du Vietnam en FPS multijoueur."],
+	["2003", "Command & Conquer Generals", "Guerre moderne et superpuissances."],
+	["2003", "Deus Ex Invisible War", "Suite cyberpunk aux choix globaux."],
+	["2003", "EVE Online", "MMO spatial d'économie et de guerre de flottes."],
+	["2003", "Freelancer", "Simulation spatiale et trafic de l'univers."],
+	["2003", "Max Payne 2 The Fall of Max Payne", "Romance noire et fusillades bullet-time."],
+	["2003", "Need for Speed Underground", "Tuning et courses de rue nocturnes."],
+	["2003", "Rainbow Six 3 Raven Shield", "Tactique d'élite en équipe, planification et précision."],
+	["2003", "Rise of Nations", "Hybride de RTS et de civilisation."],
+	["2003", "Sacred", "Action-RPG foisonnant dans le royaume d'Ancaria."],
+	["2003", "Sid Meier s Pirates", "Pirate des Caraïbes en bac à sable."],
+	["2003", "Silent Hunter III", "Simulation de sous-marin allemand."],
+	["2003", "SpellForce The Order of Dawn", "Hybride de RTS et de RPG de fantasy."],
+	["2003", "Star Wars Knights of the Old Republic Remastered", "Retour sur la saga de l'ancienne République."],
+	["2003", "Star Wars Knights of the Old Republic", "Le RPG galactique de légende et son twist narratif inoubliable."],
+	["2003", "Temple of Elemental Evil", "RPG au tour par tour fidèle aux règles de Donjons et Dragons."],
+	["2003", "The Legend of Zelda The Wind Waker", "L'aventure poétique en cel-shading sur les mers de Hyrule."],
+	["2004", "City of Heroes", "MMO de super-héros en ligne."],
+	["2004", "Counter-Strike Source", "Refonte moderne du FPS tactique."],
+	["2004", "Day of Defeat Source", "Refonte du FPS de la Seconde Guerre mondiale."],
+	["2004", "Dofus", "MMORPG tactique à l'humour français."],
+	["2004", "Doom 3", "Horreur sombre sur Mars en FPS technique."],
+	["2004", "Empire Earth II", "Stratégie sur toutes les époques."],
+	["2004", "Fable Anniversary", "Retour à Albion avec graphismes rénovés."],
+	["2004", "Fallout Tactics", "Tactique en escouade dans la guerre des acier."],
+	["2004", "Far Cry", "Île tropicale et mercenaires génétiquement modifiés."],
+	["2004", "FIFA 2005", "Football grand public de l'époque."],
+	["2004", "Half-Life 2", "La claque technique de la physique et de la résistance contre le Cartel."],
+	["2004", "Hitman Contracts", "Retour sur les souvenirs sombres de l'agent 47."],
+	["2004", "Metal Gear Solid 3 Snake Eater", "L'immersion totale dans la jungle de la Guerre Froide et la tragédie du Boss."],
+	["2004", "Need for Speed Underground 2", "Monde ouvert et personnalisation."],
+	["2004", "Painkiller", "FPS frénétique et gothique aux armes inventives."],
+	["2004", "Pro Evolution Soccer 4", "Football de simulation et passes précises."],
+	["2004", "Rome Total War", "Stratégie à l'époque romaine et batailles massives."],
+	["2004", "Splinter Cell Pandora Tomorrow", "Infiltration en ligne face aux mercenaires."],
+	["2004", "Star Wars Knights of the Old Republic II The Sith Lords", "Suite plus sombre et philosophique de l'épopée galactique."],
+	["2004", "Thief Deadly Shadows", "Garrett retourne dans la ville sombre."],
+	["2004", "Vampire The Masquerade Bloodlines", "RPG sombre dans le Los Angeles des vampires, devenu culte."],
+	["2004", "Warhammer 40000 Dawn of War", "Space Marines contre orks sur Tartarus."],
+	["2004", "World of Warcraft", "Le phénomène mondial du jeu de rôle en ligne massivement multijoueur."],
+	["2005", "Age of Empires III", "Colonisation et nouveaux mondes."],
+	["2005", "Battlefield 2", "Guerre moderne et système de commandement."],
+	["2005", "Burnout Revenge", "Course de destructions spectaculaires."],
+	["2005", "Civilization IV", "Empire modernisé aux graphismes 3D."],
+	["2005", "Company of Heroes", "Tactique de la Seconde Guerre mondiale à destruction."],
+	["2005", "Condemned Criminal Origins", "Horreur et corps à corps dans une ville déchue."],
+	["2005", "Dragon Age Journeys", "Jeu de rôle web dans le monde de Thédas."],
+	["2005", "Dungeon Siege II", "Action-RPG avec compagnons et vaste campagne de fantasy."],
+	["2005", "F.E.A.R.", "Horreur et ralentissements dans un FPS à l'IA remarquable."],
+	["2005", "Fable The Lost Chapters", "Conte moral et humoristique où chaque choix change le héros."],
+	["2005", "Guild Wars", "L'approche innovante du jeu de rôle en ligne sans abonnement et axé sur le tactique."],
+	["2005", "MapleStory", "MMO 2D de plateforme et de loot."],
+	["2005", "Need for Speed Most Wanted", "Course-poursuite et rivaux à abattre."],
+	["2005", "Pathologic", "Survie mystique dans une ville malade."],
+	["2005", "Psychonauts", "Plateforme d'entrée dans les esprits."],
+	["2005", "Quake 4", "Offensive humaine contre les Strogg."],
+	["2005", "Resident Evil 4", "Révolution du survival action en Espagne avec Leon S. Kennedy."],
+	["2005", "Shadow of the Colossus", "La poésie mélancolique et monumentale de l'affrontement de géants."],
+	["2005", "The Settlers Heritage of Kings", "Construction médiévale mêlée de combats héroïques."],
+	["2006", "Anno 1701", "Colonisation, commerce et civilisation."],
+	["2006", "Dark Messiah of Might and Magic", "Combat de fantasy à la première personne et physique."],
+	["2006", "Dragon Age Origins Awakening", "Extension d'engeances et de magie sombre."],
+	["2006", "Dreamfall The Longest Journey", "Suite de l'aventure de Zoë Castillo."],
+	["2006", "Dungeons and Dragons Online", "MMO fidèle aux règles de D&D."],
+	["2006", "Galactic Civilizations II", "Empire galactique au tour par tour."],
+	["2006", "Gothic 3", "Monde ouvert gigantesque et guerre de libération du Myrtana."],
+	["2006", "Hitman Blood Money", "Assassinats élaborés et sommets d'infiltration."],
+	["2006", "Medieval II Total War", "Retour du Moyen Âge et de la Croisade."],
+	["2006", "Need for Speed Carbon", "Courses de canyons et équipes."],
+	["2006", "Neverwinter Nights 2", "Suite riche en dialogues et en combats de groupe tactiques."],
+	["2006", "Prey", "FPS à portails et gravité inversée."],
+	["2006", "Rainbow Six Vegas", "Forces spéciales dans un Las Vegas assiégé."],
+	["2006", "Splinter Cell Double Agent", "Infiltration en agent double dans une organisation terroriste."],
+	["2006", "Test Drive Unlimited", "Course en monde ouvert à Oahu."],
+	["2006", "The Elder Scrolls IV Oblivion", "L'épopée fantastique somptueuse au cœur de la province de Cyrodiil."],
+	["2006", "The Legend of Zelda Twilight Princess", "L'aventure sombre et mature aux côtés du loup et de Midna."],
+	["2006", "Titan Quest", "Action-RPG dans la Grèce, l'Égypte et l'Orient mythologiques."],
+	["2006", "Warhammer 40000 Dark Crusade", "Campagne en carte stratégique."],
+	["2006", "Wii Sports", "Le phénomène planétaire de la détection de mouvements qui a conquis les familles."],
+	["2007", "Assassin s Creed", "Action-infiltration, Exploration historique au temps des croisades."],
+	["2007", "BioShock", "La descente philosophique et artistique dans la cité sous-marine de Rapture."],
+	["2007", "Call of Duty 4 Modern Warfare", "Le jeu qui a révolutionné le FPS moderne et le multijoueur."],
+	["2007", "Clive Barker s Jericho", "Horreur et escouade aux pouvoirs surnaturels."],
+	["2007", "Command & Conquer 3 Tiberium Wars", "Retour de la guerre du Tibérium."],
+	["2007", "Crysis", "Combinaison de nano-fibres et graphismes révolutionnaires."],
+	["2007", "Gears of War", "Tir à couvert brutal contre les Locustes."],
+	["2007", "Guitar Hero III", "Rythme de guitare en fête."],
+	["2007", "Hellgate London", "Action-RPG futuriste dans un Londres envahi de démons."],
+	["2007", "Lord of the Rings Online", "MMO dans la Terre du Milieu."],
+	["2007", "Mass Effect", "Le début de l'épopée spatiale et des choix fondateurs du commandant Shepard."],
+	["2007", "Medal of Honor Airborne", "Parachutage sur les champs de bataille européens."],
+	["2007", "Need for Speed ProStreet", "Courses organisées sur circuit."],
+	["2007", "Neverwinter Nights 2 Mask of the Betrayer", "Extension à l'histoire sombre et mature."],
+	["2007", "osu!", "Rythme de la souris au clavier."],
+	["2007", "Peggle", "Casse-tête de billes colorées."],
+	["2007", "Penumbra Overture", "Horreur de survie et physique."],
+	["2007", "Portal", "Énigmes de portails et GLaDOS cynique."],
+	["2007", "S.T.A.L.K.E.R. Shadow of Chernobyl", "Survie et FPS dans la Zone irradiée."],
+	["2007", "Sacred 2 Fallen Angel", "Action-RPG ouvert aux nombreuses classes de héros."],
+	["2007", "Super Mario Galaxy", "La révolution de la gravité et du voyage intergalactique en plateforme."],
+	["2007", "Supreme Commander", "Guerre massive et zoom stratégique."],
+	["2007", "Team Fortress 2", "FPS d'équipe coloré et caricatural par classes."],
+	["2007", "The Witcher Enhanced Edition", "Version enrichie du premier Witcher."],
+	["2007", "The Witcher", "Premier voyage de Geralt de Riv, entre choix amers et alchimie."],
+	["2007", "Unreal Tournament 3", "Arène rapide et vaste sur Unreal Engine 3."],
+	["2007", "World in Conflict", "Guerre froide à l'échelle tactique."],
+	["2008", "Audiosurf", "Courses musicales sur vos morceaux."],
+	["2008", "Braid", "Plateforme de manipulation du temps."],
+	["2008", "Brothers in Arms Hell s Highway", "Tactique de couverture en Opération Market Garden."],
+	["2008", "Burnout Paradise", "Courses de destruction en ville ouverte."],
+	["2008", "Crysis Warhead", "Récit parallèle et action de nano-combinaison."],
+	["2008", "Dawn of War Soulstorm", "Dernière extension de la saga Dawn of War."],
+	["2008", "DCS World", "Simulation de vol militaire gratuite."],
+	["2008", "Dead Space Extraction", "Préquel à rails de l'horreur spatiale."],
+	["2008", "Dead Space", "L'horreur viscérale et spatiale à bord du vaisseau minier Ishimura."],
+	["2008", "Fallout 3 Game of the Year", "Wasteland capitale et édition complète."],
+	["2008", "Fallout 3", "La transition post-apocalyptique spectaculaire en monde ouvert à Washington D.C."],
+	["2008", "Far Cry 2", "Afrique et conflit, avec feu et armes qui s'enrayent."],
+	["2008", "GTA IV", "La modélisation physique ultra-réaliste de Liberty City avec Niko Bellic."],
+	["2008", "Grid", "Course de pilotes et d'accidents réalistes."],
+	["2008", "iRacing", "Simulation de course en ligne ultra réaliste."],
+	["2008", "Left 4 Dead", "Coopération contre des hordes de zombies."],
+	["2008", "Mirror s Edge", "Parkour en vue subjective dans une cité aseptisée."],
+	["2008", "Mount and Blade Warband", "Extension au bac à sable de guerre médiévale."],
+	["2008", "Mount and Blade", "Bac à sable médiéval de cavalerie, de commerce et de conquête."],
+	["2008", "Need for Speed Undercover", "Courses poursuites et infiltrations à haut risque."],
+	["2008", "Prince of Persia", "Acrobatie élégante et partenaire ensorcelée."],
+	["2008", "Red Alert 3", "Soviétiques, Alliés et Empire du Soleil Levant."],
+	["2008", "Risen", "Île volcanique hostile et RPG de la tradition Piranha Bytes."],
+	["2008", "S.T.A.L.K.E.R. Clear Sky", "Préquel dans la Zone et guerre des factions."],
+	["2008", "Sins of a Solar Empire", "4X spatial en temps réel."],
+	["2008", "Spore", "Évolution de la cellule à l'espace."],
+	["2008", "Street Fighter IV", "Le renouveau mondial du jeu de combat en 2.5D."],
+	["2008", "Wizard101", "MMO de magie pour tous les âges."],
+	["2008", "World of Goo", "Construction de tours de gluances."],
+	["2008", "X3 Terran Conflict", "Économie spatiale et combats de flottes."],
+	["2009", "Aion", "MMO asiatique aux ailes et aux sièges."],
+	["2009", "Anno 1404", "Colonisation, Orient et Occident."],
+	["2009", "Arma 2", "Simulation militaire tactique ouverte."],
+	["2009", "Assassin s Creed II", "Chef-d'œuvre de la saga, Italie de la Renaissance avec Ezio Auditore."],
+	["2009", "Batman Arkham Asylum", "Immersion claustrophobique au cœur de l'asile psychiatrique de Gotham."],
+	["2009", "Borderlands", "Looter-shooter à l'esthétique cel-shading."],
+	["2009", "Call of Duty Modern Warfare 2", "Campagne culte et missions inoubliables à travers le globe."],
+	["2009", "Cryostasis", "Horreur arctique et temps inversé."],
+	["2009", "Darksiders", "Action-aventure apocalyptique de Guerre."],
+	["2009", "Demigod", "Arène RTS de dieux en duel."],
+	["2009", "Divinity II Ego Draconis", "Devenez chevalier-dragon dans un RPG d'aventure généreux."],
+	["2009", "Dragon Age Origins Ultimate", "Édition complète des engeances."],
+	["2009", "Dragon Age Origins", "Fantasy sombre et tactique avec le fléau des engeances."],
+	["2009", "Empire Total War", "Guerre à la poudre et batailles navales."],
+	["2009", "Hearts of Iron III", "Grande stratégie mondiale détaillée."],
+	["2009", "League of Legends", "Le jeu de stratégie compétitif en équipe le plus populaire de la planète."],
+	["2009", "Left 4 Dead 2", "Suite coopérative aux armes de corps à corps."],
+	["2009", "Machinarium", "Robot et énigmes dessinées à la main."],
+	["2009", "Operation Flashpoint Dragon Rising", "Guerre moderne réaliste sur l'île de Skira."],
+	["2009", "Plants vs Zombies", "Défense de jardin loufoque."],
+	["2009", "Prototype", "Mutant déchaîné dans New York en quarantaine."],
+	["2009", "Resident Evil 5", "Action coopérative intense sous le soleil d'Afrique."],
+	["2009", "S.T.A.L.K.E.R. Call of Pripyat", "Retour dans la Zone, enquête et survie."],
+	["2009", "Sherlock Holmes contre Arsène Lupin", "Enquête sur le fil de Londres victorien."],
+	["2009", "Shift", "Courses en simulation et vue cockpit."],
+	["2009", "Tales of Monkey Island", "Guybrush de retour en cinq épisodes."],
+	["2009", "Torchlight", "Hack and slash coloré et accessible par les créateurs de Diablo."],
+	["2009", "Trine", "Plateforme coopérative de fantasy."],
+	["2009", "Tropico 3", "Retour du dictateur de l'île."],
+	["2009", "Uncharted 2 Among Thieves", "Le chef-d'œuvre absolu du rythme et de l'action spectaculaire sur PS3."],
+	["2009", "Venetica", "RPG d'action mêlant fantasy et mort personnifiée."],
+	["2009", "Warhammer 40000 Dawn of War II", "Escouades de héros et tactique."],
+	["2009", "Wolfenstein", "FPS occulte à l'ambiance de la Seconde Guerre mondiale."],
+	["2010", "Aliens vs Predator", "Trois campagnes pour trois espèces."],
+	["2010", "Alpha Protocol", "RPG d'espionnage où dialogues et choix modèlent l'intrigue."],
+	["2010", "Amnesia The Dark Descent", "Horreur sans armes dans un château."],
+	["2010", "Arcania Gothic 4", "Quatrième épisode de Gothic dans l'île de Feshyr."],
+	["2010", "Assassin s Creed Brotherhood", "Gestion de confrérie et batailles épiques dans Rome."],
+	["2010", "Battlefield Bad Company 2", "Escouade rebelle et destruction spectaculaire."],
+	["2010", "BioShock 2", "Papa Lourd dans les profondeurs de Rapture."],
+	["2010", "Blur", "Courses d'arcade et armes à bonus."],
+	["2010", "Call of Duty Black Ops", "Guerre froide, conspirations et mode zombies mythique."],
+	["2010", "Cities in Motion", "Gestion des transports urbains."],
+	["2010", "Civilization V", "Cases hexagonales et nouvelle IA."],
+	["2010", "Fallout New Vegas", "Désert du Mojave, factions et choix qui redéfinissent le RPG."],
+	["2010", "Hot Pursuit", "Retour de la course de police."],
+	["2010", "Just Cause 2", "Chaos tropical avec grappin et parachute."],
+	["2010", "Limbo", "Plateforme sombre en noir et blanc."],
+	["2010", "Mafia II", "Ascension d'un mafieux dans les années 40-50."],
+	["2010", "Mass Effect 2", "L'un des meilleurs scénarios et recrutements de l'histoire du jeu de rôle."],
+	["2010", "Medal of Honor", "Retour à la guerre moderne en Afghanistan."],
+	["2010", "Metro 2033", "Survie dans le métro de Moscou postnucléaire."],
+	["2010", "Mount and Blade With Fire and Sword", "Guerre d'Europe de l'Est à la poudre noire."],
+	["2010", "Napoleon Total War", "Guerres napoléoniennes et campagnes."],
+	["2010", "Red Dead Redemption", "La tragédie crépusculaire de John Marston dans un Far West finissant."],
+	["2010", "Singularity", "Manipulation du temps sur l'île de Katorga-12."],
+	["2010", "Splinter Cell Conviction", "Infiltration agressive et exécutions marquées."],
+	["2010", "Split Second", "Courses qui détruisent les circuits."],
+	["2010", "Star Trek Online", "MMO des vaisseaux de Starfleet."],
+	["2010", "StarCraft II Wings of Liberty", "Le retour triomphant et ultra-compétitif de la stratégie spatiale."],
+	["2010", "Super Meat Boy", "Plateforme précise et mortelle."],
+	["2010", "Supreme Commander 2", "Suite de la guerre à grande échelle."],
+	["2010", "Total War Shogun 2", "Japon des Sengoku et batailles fines."],
+	["2010", "Two Worlds II", "RPG ouvert avec personnalisation poussée de la magie."],
+	["2010", "World of Tanks", "Combats de chars en ligne gratuits."],
+	["2011", "Anno 2070", "Colonisation futuriste et écologie."],
+	["2011", "Assassin s Creed Revelations", "Conclusion de la trilogie d'Ezio à Constantinople."],
+	["2011", "Bastion", "Action-RPG narré en direct."],
+	["2011", "Batman Arkham City", "Monde ouvert magistral dans une zone carcérale de Gotham."],
+	["2011", "Battlefield 3", "FPS de guerre moderne en destruction de masse."],
+	["2011", "Brink", "FPS d'équipe et mouvement fluide."],
+	["2011", "Bulletstorm", "FPS déjanté de combos d'exécution créatifs."],
+	["2011", "Call of Duty Modern Warfare 3", "Conclusion explosive de la trilogie Modern Warfare originale."],
+	["2011", "Crysis 2", "New York ravagé par une invasion extraterrestre."],
+	["2011", "Dark Souls", "La consécration de la difficulté juste et de l'exploration interconnectée."],
+	["2011", "Dead Island", "Zombies et station balnéaire de Banoi."],
+	["2011", "Deus Ex Human Revolution", "Cyberpunk renaissance et augmentations controversées."],
+	["2011", "Dirt 3", "Rallye et Gymkhana spectaculaire."],
+	["2011", "Dragon Age II", "Histoire resserrée de Hawke dans la cité de Kirkwall."],
+	["2011", "Duke Nukem Forever", "Retour tardif du roi de l'attitude."],
+	["2011", "Dungeon Defenders", "Défense de tour et RPG coopératif."],
+	["2011", "Dungeon Siege III", "Action-RPG coopératif pour renouer avec la Légion."],
+	["2011", "Frozen Synapse", "Tactique simultanée en temps réel."],
+	["2011", "Homefront", "Occupation américaine et résistance."],
+	["2011", "Minecraft", "Blocs, créativité et survie sans limite."],
+	["2011", "Need for Speed The Run", "Course transcontinentale à haut risque."],
+	["2011", "Orcs Must Die", "Défense de forteresse et pièges."],
+	["2011", "Outland", "Plateforme de couleur et d'ombre."],
+	["2011", "Portal 2 Co-op", "Aventure en coopération de GLaDOS."],
+	["2011", "Portal 2", "Le chef-d'œuvre absolu de la logique spatiale et de l'humour cynique."],
+	["2011", "Rage", "Wasteland rapide et course en FPS."],
+	["2011", "Risen 2 Dark Waters", "Pirates, magie vaudou et aventure maritime."],
+	["2011", "Saints Row The Third", "Chaos déjanté et humour crasse à Steelport."],
+	["2011", "Skyrim Special", "Remaster du monde nordique de Bethesda."],
+	["2011", "SpaceChem", "Énigmes de chimie programmée."],
+	["2011", "Star Wars The Old Republic", "MMO de BioWare dans l'ancienne République."],
+	["2011", "Tera", "MMO d'action à combat sans cible."],
+	["2011", "Terraria", "Bac à sable 2D d'exploration et de construction."],
+	["2011", "Test Drive Unlimited 2", "Course de luxe et vie de pilote."],
+	["2011", "The Binding of Isaac", "Roguelike de donjons et de larmes."],
+	["2011", "The Elder Scrolls V Skyrim", "Le monument absolu de la fantasy nordique et des dragons."],
+	["2011", "The Witcher 2 Assassins of Kings", "Intrigues royales, choix radicaux et graphismes somptueux."],
+	["2011", "Trine 2", "Suite colorée et inventive du trio de héros."],
+	["2011", "Tropico 4", "Dictateur en chef et tourisme."],
+	["2012", "Alan Wake", "Thriller psychologique inspiré de Stephen King."],
+	["2012", "Assassin s Creed III", "Révolution américaine, combats dans la neige et la nature sauvage."],
+	["2012", "Borderlands 2", "Looter-shooter plus drôle, plus riche."],
+	["2012", "Botanicula", "Aventure poétique de créatures végétales."],
+	["2012", "Call of Duty Black Ops II", "Conflit futuriste, choix multiples et scénario marquant."],
+	["2012", "Counter-Strike Global Offensive", "FPS tactique compétitif mondial."],
+	["2012", "Crusader Kings II", "Dynasties et luttes médiévales."],
+	["2012", "Darksiders II", "Mort chevauche en action-aventure à la manière de Zelda."],
+	["2012", "Diablo III", "Retour du chaos à Sanctuaire avec butin et sorts spectaculaires."],
+	["2012", "Dishonored", "Assassin surnaturel dans une cité industrielle."],
+	["2012", "Euro Truck Simulator 2", "Camionneur à travers l'Europe."],
+	["2012", "Far Cry 3", "L'immersion sauvage et la folie psychologique de Vaas sur une île tropicale."],
+	["2012", "Fez", "Plateforme en 2D qui pivote en 3D."],
+	["2012", "FTL Faster Than Light", "Gestion de vaisseau et roguelike."],
+	["2012", "Guild Wars 2", "MMO sans abonnement aux événements dynamiques."],
+	["2012", "Hitman Absolution", "Infiltration et fuite de l'agent 47."],
+	["2012", "Hotline Miami", "Action violente et néon des années 80."],
+	["2012", "Journey", "L'émotion pure d'un voyage mystique et visuel à travers le désert."],
+	["2012", "Kingdoms of Amalur Reckoning", "Action-RPG fluide à l'univers dessiné par R.A. Salvatore."],
+	["2012", "La-Mulana", "Archéologie rétro et énigmes impitoyables."],
+	["2012", "Mark of the Ninja", "Infiltration 2D de ninja en cape."],
+	["2012", "Mass Effect 3", "La conclusion émotionnelle de la trilogie spatiale de Shepard."],
+	["2012", "Max Payne 3", "Fusillades brutales dans les favelas du Brésil."],
+	["2012", "Natural Selection 2", "FPS-RTS asymétrique en ligne."],
+	["2012", "Need for Speed Most Wanted", "Échappez à la police dans une ville ouverte et dynamique."],
+	["2012", "Orcs Must Die 2", "Suite des défenses et des pièges."],
+	["2012", "Planetside 2", "Guerre massive en ligne avec milliers de joueurs."],
+	["2012", "Rayman Origins", "Plateforme colorée et joyeuse."],
+	["2012", "Resident Evil 6", "Campagnes multiples et grand spectacle mondial contre le bioterrorisme."],
+	["2012", "Resident Evil Revelations", "Enquête angoissante à bord d'un paquebot fantôme."],
+	["2012", "Sleeping Dogs", "Policier infiltré dans les triades de Hong Kong."],
+	["2012", "Sniper Elite V2", "Balistique et mort au ralenti."],
+	["2012", "Spec Ops The Line", "Dérive morale dans un Dubaï enseveli de sable."],
+	["2012", "Spelunky", "Roguelike de plateforme et d'exploration."],
+	["2012", "Street Fighter X Tekken", "Crossover explosif entre les deux légendes du combat."],
+	["2012", "The Amazing Spider Man", "Adaptation officielle des films avec combats aériens fluides."],
+	["2012", "The Room", "Énigmes de boîtes mystérieuses."],
+	["2012", "The Walking Dead", "Aventure narrative et choix cruels."],
+	["2012", "Torchlight II", "Suite généreuse, coopérative et ultra addictive."],
+	["2012", "Wakfu", "MMORPG tactique d'un monde en pâte d'écume."],
+	["2012", "War Thunder", "Combat d'avions, chars et navires."],
+	["2012", "Wargame European Escalation", "Guerre froide en temps réel à grande échelle."],
+	["2012", "XCOM Enemy Unknown", "Retour de la défense de la Terre en tactique."],
+	["2013", "7 Days to Die", "Survie zombie et construction de base."],
+	["2013", "Amnesia A Machine for Pigs", "Horreur victorienne et machinerie."],
+	["2013", "Antichamber", "Énigmes impossibles et géométrie folle."],
+	["2013", "Arma 3", "Simulation militaire en monde ouvert."],
+	["2013", "Assassin s Creed IV Black Flag", "Piraterie, batailles navales et liberté dans les Caraïbes."],
+	["2013", "Batman Arkham Origins Blackgate Deluxe Edition", "Action en 2.5D au sein d'une prison de haute sécurité."],
+	["2013", "Batman Arkham Origins", "Prequel intense avec un Chevalier Noir plus jeune et traqué."],
+	["2013", "Battlefield 4", "FPS de guerre totale et Levolution."],
+	["2013", "BioShock Infinite", "Le voyage vertigineux et politique dans la cité volante de Columbia."],
+	["2013", "Brothers A Tale of Two Sons", "Aventure coopérative à une manette."],
+	["2013", "Call of Duty Ghosts", "Conflit futuriste et unités d'élite."],
+	["2013", "DayZ", "Survie zombie multijoueur."],
+	["2013", "Dead Space 3", "Retour d'Isaac Clarke sur Tau Volantis."],
+	["2013", "Divinity Dragon Commander", "Mélange insolite de stratégie, d'action et de RPG."],
+	["2013", "Don t Starve", "Survie sombre et excentrique."],
+	["2013", "Dota 2", "MOBA de Valve aux fiches de héros."],
+	["2013", "Dungeon Siege III Treasures of the Sun", "Extension du hack and slash coopératif."],
+	["2013", "Europa Universalis IV", "Grande stratégie de l'Europe moderne."],
+	["2013", "Final Fantasy XIV A Realm Reborn", "MMO renaissant de Square Enix."],
+	["2013", "Gone Home", "Enquête intime dans une maison vide."],
+	["2013", "GTA V", "Trois protagonistes, braquages et monde ouvert immense à Los Santos."],
+	["2013", "Grid 2", "Retour de la course de Codemasters."],
+	["2013", "Grim Dawn", "Hack and slash sombre et dense dans un monde en ruines."],
+	["2013", "Guacamelee", "Metroidvania de lucha libre."],
+	["2013", "IL-2 Sturmovik Battle of Stalingrad", "Combat aérien sur le front de l'Est."],
+	["2013", "Injustice Gods Among Us Ultimate Edition", "Affrontements épiques entre super-héros et super-vilains DC."],
+	["2013", "Kerbal Space Program", "Programme spatial et physique réaliste."],
+	["2013", "Metro Last Light", "Suite de la survie dans les tunnels de Moscou."],
+	["2013", "Mortal Kombat 9", "Retour du combat gore culte."],
+	["2013", "Mount and Blade Warband Napoleonic", "Guerres napoléoniennes en bac à sable."],
+	["2013", "Naruto Shippuden Ultimate Ninja Storm 3 Full Burst", "Guerre des ninjas à grande échelle et combats d'anthologie."],
+	["2013", "Need for Speed Rivals", "Policiers et pilotes en ligne."],
+	["2013", "Neverwinter", "MMO gratuit de Donjons et Dragons."],
+	["2013", "Old School RuneScape", "Retour au RuneScape de 2007."],
+	["2013", "Outlast", "Survie horrifique dans un asile sans armes."],
+	["2013", "Papers Please", "Garde-frontière et dilemme moral en 2D."],
+	["2013", "Path of Exile", "Action-RPG gratuit à l'arbre de compétences titanesque."],
+	["2013", "Payday 2", "Braquages coopératifs en équipe masquée."],
+	["2013", "Project Zomboid", "Survie zombie isométrique réaliste."],
+	["2013", "Rayman Legends", "Plateforme musicale et colorée."],
+	["2013", "Risk of Rain", "Roguelike de tir 2D en pixel art."],
+	["2013", "Rogue Legacy", "Roguelite de dynastie de héros."],
+	["2013", "Rust", "Survie multijoueur impitoyable."],
+	["2013", "Saints Row IV", "Président et pouvoirs surhumains dans une simulation."],
+	["2013", "Shadowrun Returns", "Cyberpunk fantastique au tour par tour en vue isométrique."],
+	["2013", "SimCity", "Reboot de la gestion de ville."],
+	["2013", "Surgeon Simulator", "Chirurgie absurde à la physique folle."],
+	["2013", "Teslagrad", "Plateforme d'énigmes électromagnétiques."],
+	["2013", "The Last of Us", "Le chef-d'œuvre narratif et dramatique de Joel et Ellie."],
+	["2013", "The Stanley Parable", "Narrateur ironique et fiction interactive."],
+	["2013", "The Wolf Among Us", "Enquête de Bigby dans un conte noir."],
+	["2013", "Tomb Raider", "Lara Croft rebootée dans la survie sur Yamatai."],
+	["2013", "Total War Rome II", "Retour de l'antiquité et des légions."],
+	["2013", "Warframe", "Ninjas spatiaux et farm coopératif."],
+	["2014", "Age of Wonders III", "Fantasy, héros et armées."],
+	["2014", "Alien Isolation", "Le jeu d'horreur de survie ultime face à un Xénomorphe doté d'une intelligence artificielle redoutable."],
+	["2014", "ArcheAge", "MMO en monde ouvert et navigation."],
+	["2014", "Assassin s Creed Rogue", "Incarnez un Templier traquant ses anciens frères Assassins."],
+	["2014", "Assassin s Creed Unity", "Paris en pleine Révolution française, graphismes somptueux et coop."],
+	["2014", "Assetto Corsa", "Simulation de course réaliste et modable."],
+	["2014", "Banished", "Survie d'un village médiéval."],
+	["2014", "Banner Saga 2", "Suite de l'exode et des choix irréversibles."],
+	["2014", "Bayonetta 2", "Le paroxysme du jeu d'action frénétique et spectaculaire sur Wii U."],
+	["2014", "Besiege", "Machines de guerre en bois."],
+	["2014", "Broken Age", "Aventure de deux adolescents de Tim Schafer."],
+	["2014", "Call of Duty Advanced Warfare", "Exosquelettes et guerre futuriste."],
+	["2014", "Castlevania Lords of Shadow 2", "Dracula et épopée gothique."],
+	["2014", "Civilization Beyond Earth", "Colonisation d'une planète inconnue."],
+	["2014", "Crypt of the NecroDancer", "Roguelike rythmique et musique."],
+	["2014", "Dark Souls II", "Royaume de Drangleic et combats toujours plus exigeants."],
+	["2014", "Divinity Original Sin", "RPG tactique libre et coopératif à l'interaction systémique."],
+	["2014", "Dragon Age Inquisition", "La grande fresque fantastique et politique de l'Inquisition sur Thédas."],
+	["2014", "Dungeon of the Endless", "Roguelike de défense et de gestion."],
+	["2014", "Dying Light", "Parkour et zombies de jour comme de nuit."],
+	["2014", "Elite Dangerous", "Galaxie entière à la taille réelle."],
+	["2014", "Endless Legend", "4X de fantasy au style magnifique."],
+	["2014", "Evolve", "Chasseurs contre monstre en 4 contre 1."],
+	["2014", "Far Cry 4", "Kyrat, guerre civile et éléphants."],
+	["2014", "Five Nights at Freddy s", "Horreur de surveillance dans une pizzeria."],
+	["2014", "Geometry Dash", "Plateforme musicale ultra précise."],
+	["2014", "Grid Autosport", "Retour aux courses de tourisme."],
+	["2014", "Hearthstone", "Jeu de cartes de l'univers Warcraft."],
+	["2014", "Hotline Miami 2 Wrong Number", "Suite néo-noire de l'action rythmée."],
+	["2014", "Invisible Inc", "Tactique d'espionnage cyberpunk."],
+	["2014", "Lords of the Fallen", "Action-RPG de fantasy sombre, lourd et technique."],
+	["2014", "Metro Redux", "Compilation remasterisée de Metro."],
+	["2014", "Middle-earth Shadow of Mordor", "Système Nemesis et chasse aux capitaines orques."],
+	["2014", "Monument Valley", "Énigmes d'architecture impossible."],
+	["2014", "Naruto Shippuden Ultimate Ninja Storm Revolution", "Tournois ninjas et histoires inédites des personnages."],
+	["2014", "Nidhogg", "Duels d'escrime en 2D."],
+	["2014", "Rocksmith 2014", "Apprentissage de la guitare en jeu."],
+	["2014", "Shadowrun Dragonfall", "Berlin cyberpunk, intrigues et tactique en tour par tour."],
+	["2014", "Shadowrun Hong Kong", "Tactique cyberpunk en Hong Kong."],
+	["2014", "Shovel Knight", "Plateforme à la 8 bits et nostalgie."],
+	["2014", "Smite", "MOBA de dieux à la troisième personne."],
+	["2014", "Sniper Elite 3", "Balles en slow motion en Afrique du Nord."],
+	["2014", "Sunless Sea", "Exploration narrative sur une mer souterraine."],
+	["2014", "The Amazing Spider Man 2", "Liberté de toile et super-vilains iconiques de l'univers."],
+	["2014", "The Banner Saga", "Tactique et caravane dans une mythologie nordique."],
+	["2014", "The Binding of Isaac Rebirth", "Reboot du roguelike de larmes."],
+	["2014", "The Crew", "Course en monde ouvert à travers les États-Unis."],
+	["2014", "The Elder Scrolls Online", "MMO de Tamriel, ouvert et multijoueur."],
+	["2014", "The Evil Within", "Survival horror de Shinji Mikami."],
+	["2014", "The Talos Principle", "Énigmes philosophiques et IA."],
+	["2014", "The Walking Dead Season Two", "Clementine et choix impossibles."],
+	["2014", "This War of Mine", "Survie de civils en pleine guerre."],
+	["2014", "Titanfall", "Pilotes et mechas en FPS multijoueur rapide."],
+	["2014", "Transistor", "Action-RPG tactique et voix mélancolique."],
+	["2014", "Tropico 5", "Dictature à travers les âges."],
+	["2014", "Wargame Red Dragon", "Guerre froide en Asie."],
+	["2014", "Wasteland 2", "Retour du RPG post-apocalyptique tactique et narratif."],
+	["2014", "Wolfenstein The New Order", "Uchronie nazie et FPS efficace."],
+	["2015", "Anno 2205", "Colonisation de la Lune."],
+	["2015", "Ark Survival Evolved", "Survie préhistorique et domestication de dinosaures."],
+	["2015", "Assassin s Creed Syndicate", "Londres victorienne, gangs de rue et calèches endiablées."],
+	["2015", "Axiom Verge", "Metroidvania hommage à Metroid."],
+	["2015", "Batman Arkham Knight", "Conclusion grandiose avec pilotage de la Batmobile dans Gotham."],
+	["2015", "Battlefield Hardline", "Policiers contre criminels en Battlefield."],
+	["2015", "Bloodborne", "L'ambiance gothique, lovecraftienne et agressive de Yharnam."],
+	["2015", "Call of Duty Black Ops III", "Combats futuristes améliorés et mouvements dynamiques."],
+	["2015", "Cities Skylines", "Gestion de ville moderne et libre."],
+	["2015", "Dark Souls II Scholar of the First Sin", "Édition remaniée de la couronne perdue."],
+	["2015", "Darkest Dungeon", "RPG gothique de stress et de mort."],
+	["2015", "Euro Truck Simulator 2 Going East", "Voyage à l'Est."],
+	["2015", "Everybody s Gone to the Rapture", "Promenade mélancolique d'un village déserté."],
+	["2015", "Fallout 4", "Survie et reconstruction dans le Commonwealth de Boston."],
+	["2015", "Her Story", "Interrogatoire en vidéos et enquête."],
+	["2015", "Heroes of the Storm", "MOBA des héros de l'univers Blizzard."],
+	["2015", "Infinifactory", "Énigmes d'usines de science-fiction."],
+	["2015", "Just Cause 3", "Chaos destructeur dans l'archipel de Medici."],
+	["2015", "Keep Talking and Nobody Explodes", "Désamorçage en équipe avec un manuel."],
+	["2015", "Life is Strange", "Voyage dans le temps et choix de lycéenne."],
+	["2015", "Mad Max", "Course aux ressources dans les terres dévastées."],
+	["2015", "Magicka 2", "Sorts combinés et chaos en coopération."],
+	["2015", "Metal Gear Solid V The Phantom Pain", "Infiltration en monde ouvert de Big Boss."],
+	["2015", "Need for Speed", "Le retour des courses nocturnes et de la personnalisation poussée."],
+	["2015", "Nuclear Throne", "Roguelike de tir dans les terres radioactives."],
+	["2015", "Offworld Trading Company", "Stratégie économique sur Mars."],
+	["2015", "Ori and the Blind Forest", "Metroidvania poétique et fluide."],
+	["2015", "Pathfinder Kingmaker", "RPG de gestion de royaume au vaste système de règles."],
+	["2015", "Pillars of Eternity", "Retour du RPG isométrique classique, riche en lore."],
+	["2015", "Prison Architect", "Gestion de prison et de ses détenus."],
+	["2015", "Project CARS", "Simulation de course et circuits."],
+	["2015", "Rainbow Six Siege", "Assauts tactiques en équipe et destruction."],
+	["2015", "Rebel Galaxy", "Combats spatiaux et commerce."],
+	["2015", "Resident Evil Revelations 2", "Aventure épisodique axée sur la survie et la coopération."],
+	["2015", "Rocket League Supersonic", "Football de voitures volantes."],
+	["2015", "Rocket League", "Le mélange parfait entre le football et le pilotage de véhicules survoltés."],
+	["2015", "SOMA", "Horreur sous-marine et philosophie de la conscience."],
+	["2015", "Star Wars Battlefront", "Combats à grande échelle dans la galaxie."],
+	["2015", "Tales from the Borderlands", "Aventure interactive de chasseurs de trésors."],
+	["2015", "Tales of Zestiria", "JRPG d'action sur les terres des Séraphins."],
+	["2015", "The Witcher 3 Wild Hunt", "Monument du monde ouvert et chef-d'œuvre narratif."],
+	["2015", "Total War Attila", "Chute de l'Empire romain."],
+	["2015", "Trine 3", "Troisième aventure de fantasy en 3D."],
+	["2015", "Undertale Complete", "RPG qui laisse le choix de la paix."],
+	["2015", "Undertale", "RPG où l'on peut épargner chaque ennemi."],
+	["2015", "World of Warships", "Combats navals en ligne gratuits."],
+	["2016", "American Truck Simulator", "Camionneur de la route 66."],
+	["2016", "Ashes of the Singularity", "RTS massif et nouvelle génération."],
+	["2016", "Batman Arkham VR", "Expérience en réalité virtuelle dans la peau du Chevalier Noir."],
+	["2016", "Battle Brothers", "Gestion de compagnie de mercenaires impitoyable."],
+	["2016", "Battlefield 1", "Première Guerre mondiale à grande échelle."],
+	["2016", "Battlefleet Gothic Armada", "Batailles navales de Warhammer."],
+	["2016", "Blade and Soul", "MMO d'arts martiaux et de combat fluide."],
+	["2016", "Civilization VI", "Cités à quartiers et empire."],
+	["2016", "Dark Souls III", "Conclusion enflammée et spectaculaire de la trilogie."],
+	["2016", "Day of Infamy", "FPS de la Seconde Guerre mondiale tactique."],
+	["2016", "Dead by Daylight", "Tueur contre survivants en asymétrique."],
+	["2016", "Deus Ex Mankind Divided", "Apartheid mécanique et infiltration à Prague."],
+	["2016", "Dirt 4", "Rallye et mode créatif."],
+	["2016", "Dirt Rally", "Rallye sans pitié, exigeant et précis."],
+	["2016", "Dishonored 2", "Infiltration créative dans la ville mécanique de Karnaca."],
+	["2016", "Don t Starve Together", "Version coopérative de la survie excentrique."],
+	["2016", "Doom Reboot", "Le retour fracassant du FPS frénétique et ultra-violent."],
+	["2016", "Dragon Ball Xenoverse 2", "Créez votre avatar et sauvez l'histoire de Dragon Ball."],
+	["2016", "Dragon s Dogma Dark Arisen", "Chasse aux monstres titanesques avec pions fidèles."],
+	["2016", "Dreamfall Chapters", "Conclusion de l'aventure de Zoë."],
+	["2016", "Enter the Gungeon", "Roguelike de tir bullet-hell."],
+	["2016", "Euro Truck Simulator 2", "Conduite de camions à travers l'Europe."],
+	["2016", "Factorio", "Usines et automatisation sur une planète sauvage."],
+	["2016", "Final Fantasy Type-0 HD", "Guerre de cadets dans un monde de cristaux."],
+	["2016", "Firewatch", "Garde forestier et mystère dans le Wyoming."],
+	["2016", "Forza Horizon 3", "Course en Australie en monde ouvert."],
+	["2016", "Forza Motorsport 7", "Course sur circuit de simulation."],
+	["2016", "Furi", "Duels de boss stylisés."],
+	["2016", "Gears of War 4", "Nouvelle génération face aux Swarm."],
+	["2016", "Hearts of Iron IV Waking the Tiger", "Extension de la grande stratégie mondiale."],
+	["2016", "Hearts of Iron IV", "Seconde Guerre mondiale à grande échelle."],
+	["2016", "Hitman", "Assassinats en bacs à sable épisodiques."],
+	["2016", "Human Fall Flat", "Physique drôle et énigmes de coopération."],
+	["2016", "Hyper Light Drifter", "Action rétro-futuriste et silencieuse."],
+	["2016", "Inside", "Thriller silencieux et sombre en 2D."],
+	["2016", "Killer Instinct", "Combat de combos et de combos."],
+	["2016", "Killing Floor 2", "Tir coopératif contre des clones monstrueux."],
+	["2016", "Layers of Fear", "Horreur psychologique d'un peintre."],
+	["2016", "Mafia III", "Vengeance dans la Louisiane de 1968."],
+	["2016", "Mortal Kombat XL", "Combats gores et cinématiques de Fatalités cultes."],
+	["2016", "Naruto Shippuden Ultimate Ninja Storm 4", "Apothéose visuelle de la guerre ninja et combats titanesques."],
+	["2016", "No Man s Sky", "Exploration d'univers procédural infini."],
+	["2016", "Obduction", "Énigmes et mondes mystérieux."],
+	["2016", "Overcooked", "Cuisine coopérative chaotique."],
+	["2016", "Overwatch", "Le jeu de tir héroïque coloré et dynamique signé Blizzard."],
+	["2016", "Owlboy", "Plateforme volante et conte d'amitié."],
+	["2016", "Oxenfree", "Aventure surnaturelle et dialogues vifs."],
+	["2016", "Planet Coaster", "Gestion de parc d'attractions moderne."],
+	["2016", "Project CARS 2", "Simulation de course complète."],
+	["2016", "Call of Duty Modern Warfare Remastered", "La refonte graphique complète de l'opus original avec textures modernisées."],
+	["2016", "Quantum Break", "Série télévisée et pouvoirs temporels."],
+	["2016", "Rez Infinite", "Shooter rythmique et synesthésie."],
+	["2016", "Rise of the Tomb Raider", "Lara en Sibérie et à la recherche de l'immortalité."],
+	["2016", "Salt and Sanctuary", "Souls-like 2D en pixel art."],
+	["2016", "Shadow Tactics Blades of the Shogun", "Infiltration tactique dans le Japon féodal."],
+	["2016", "Starbound", "Exploration spatiale et construction en 2D."],
+	["2016", "Stardew Valley", "Ferme, villageois et vie de campagne."],
+	["2016", "Steep", "Sports d'hiver extrêmes en monde ouvert."],
+	["2016", "Stellaris", "4X spatial aux grandes ambitions galactiques."],
+	["2016", "Street Fighter V Champion Edition", "Compétition eSport féroce et casting légendaire."],
+	["2016", "Superhot", "Le temps avance quand vous bougez."],
+	["2016", "The Division", "RPG de tir dans une New York contaminée."],
+	["2016", "The Witness", "Énigmes de labyrinthes sur une île."],
+	["2016", "Thumper", "Rythme et violence en jeu de fer."],
+	["2016", "Titanfall 2", "Campagne inventive et pilotage de titan."],
+	["2016", "Torment Tides of Numenera", "Successeur spirituel de Planescape Torment."],
+	["2016", "Total War Warhammer", "Fantasy et batailles de Total War."],
+	["2016", "Tyranny", "RPG où vous servez un seigneur du mal tout-puissant."],
+	["2016", "Uncharted 4 A Thief s End", "La conclusion poignante et magistrale des aventures de Nathan Drake."],
+	["2016", "Unravel", "Aventure de laine rouge et mémoire."],
+	["2016", "VA-11 Hall-A", "Barman cyberpunk et récits de nuit."],
+	["2016", "Vampire The Masquerade Redemption", "Suite des nuits sombres du Monde des Ténèbres."],
+	["2016", "Watch Dogs 2", "Hackers en liberté dans la baie de San Francisco."],
+	["2016", "XCOM 2", "Résistance contre une Terre occupée."],
+	["2017", "A Hat in Time", "Plateforme 3D colorée à la Mario 64."],
+	["2017", "Absolver", "Combat en ligne et arts martiaux personnalisés."],
+	["2017", "Albion Online", "MMO sandbox à l'économie des joueurs."],
+	["2017", "Assassin s Creed Origins", "Immersion totale dans l'Égypte antique et naissance de la confrérie."],
+	["2017", "Brawlhalla", "Combat de plateforme en ligne."],
+	["2017", "Cuphead", "Boss rush en dessin animé des années 1930."],
+	["2017", "Destiny 2", "Looter-shooter spatial en ligne."],
+	["2017", "Divinity Original Sin II", "Le sommet absolu du jeu de rôle tactique en vue isométrique et en coopération."],
+	["2017", "Doki Doki Literature Club", "Visual novel et horreur métafictive."],
+	["2017", "Endless Space 2", "4X spatial et factions uniques."],
+	["2017", "Escape from Tarkov", "FPS d'extraction et de survie."],
+	["2017", "Everspace", "Roguelike de combat spatial."],
+	["2017", "For Honor", "Combat de mêlée en duel."],
+	["2017", "Fortnite", "Battle royale et construction de forts."],
+	["2017", "Foxhole", "Guerre persistante en ligne massive."],
+	["2017", "Friday the 13th The Game", "Slasher multijoueur à Crystal Lake."],
+	["2017", "Gang Beasts", "Bagarres de petits bonshommes mous."],
+	["2017", "Gorogoa", "Énigmes d'illustrations imbriquées."],
+	["2017", "Hand of Fate 2", "Cartes, destin et combats d'action."],
+	["2017", "Hellblade Enhanced", "Voyage de Senua remixé."],
+	["2017", "Hellblade Senua s Sacrifice", "Voyage psychologique et sensoriel dans la mythologie nordique."],
+	["2017", "Hello Neighbor", "Furtivité et mystère du voisin."],
+	["2017", "Hollow Knight Complete", "Royaume souterrain des insectes."],
+	["2017", "Hollow Knight", "Royaume insecte d'une profondeur envoûtante."],
+	["2017", "Injustice 2 Legendary Edition", "Personnalisation poussée des héros DC et combats spectaculaires."],
+	["2017", "King of Fighters XIV", "Combat 3v3 en 3D."],
+	["2017", "Life is Strange Before the Storm", "Préquel avec Chloe Price."],
+	["2017", "Little Nightmares", "Horreur enfantine dans une cuisine géante."],
+	["2017", "Marvel vs Capcom Infinite", "Combat 2v2 de super-héros."],
+	["2017", "Mass Effect Andromeda", "Nouvelle galaxie et nouveaux équipages à explorer."],
+	["2017", "Middle-earth Shadow of War", "Orques et système de capitaines fidèles."],
+	["2017", "Naruto Shippuden Ultimate Ninja Storm 2", "Combats de boss épiques face à l'Akatsuki."],
+	["2017", "Naruto Shippuden Ultimate Ninja Storm 4 Road to Boruto", "Nouvelle génération de ninjas avec Boruto et ses amis."],
+	["2017", "Naruto Ultimate Ninja Storm", "Les origines de l'épopée ninja en cel-shading."],
+	["2017", "Need for Speed Payback", "Vengeance et braquages spectaculaires sur quatre roues."],
+	["2017", "Nier Automata", "Androïdes, philosophie et combats virtuoses de Yoko Taro."],
+	["2017", "Night in the Woods", "Aventure narrative de petite ville."],
+	["2017", "Nioh Complete Edition", "Édition complète du premier Nioh."],
+	["2017", "Nioh", "Samouraï anglais dans un Japon féodal peuplé de yokai."],
+	["2017", "Northgard", "Stratégie viking et survie hivernale."],
+	["2017", "Observer", "Cyberpunk et enquête dans les esprits."],
+	["2017", "Opus Magnum", "Alchimie et énigmes de machines."],
+	["2017", "Outlast 2", "Horreur religieuse et maïs à Temple Gate."],
+	["2017", "PlayerUnknown s Battlegrounds", "Battle royale à 100 joueurs sur l'île d'Erangel."],
+	["2017", "Prey", "Horreur et choix sur la station Talos I."],
+	["2017", "Pyre", "Rites et combats de sport en RPG."],
+	["2017", "Resident Evil 7 Biohazard", "Retour aux sources en vue subjective dans une maison hantée en Louisiane."],
+	["2017", "Rising Storm 2 Vietnam", "FPS de la guerre du Vietnam."],
+	["2017", "Rivals of Aether", "Combat de plateforme à la Smash."],
+	["2017", "Sniper Elite 4", "Italie de 1943 et tirs balistiques."],
+	["2017", "Sonic Mania", "Retour de Sonic en 2D classique."],
+	["2017", "Stellaris Utopian Visions", "Extension de la grande stratégie spatiale."],
+	["2017", "Subnautica", "Survie aquatique sur la planète 4546B."],
+	["2017", "Super Mario Odyssey", "La joie pure du jeu de plateforme 3D et de la capture de chapeau."],
+	["2017", "Tekken 7", "Combats en 3D techniques et conclusion de la saga Mishima."],
+	["2017", "The Evil Within 2", "Retour dans Union avec Sebastian Castellanos."],
+	["2017", "The Legend of Zelda Breath of the Wild", "La révolution totale de l'exploration libre et de la physique dans Hyrule."],
+	["2017", "The Long Dark", "Survie en solitaire dans le grand froid."],
+	["2017", "Thimbleweed Park", "Aventure rétro de Ron Gilbert."],
+	["2017", "Total War Warhammer II", "Fantasy et batailles aux quatre coins du monde."],
+	["2017", "Warhammer 40000 Dawn of War III", "Retour de l'action de guerre de Warhammer."],
+	["2017", "Warhammer 40000 Inquisitor Martyr", "Action-RPG impitoyable dans l'univers de Warhammer."],
+	["2017", "Warhammer Vermintide", "Premières traques coopératives contre les skavens."],
+	["2017", "What Remains of Edith Finch", "Anthologie de morts poétiques d'une famille."],
+	["2017", "Wolfenstein II The New Colossus", "Révolution contre le régime nazi en Amérique."],
+	["2017", "X-Plane 11", "Simulation de vol civile détaillée."],
+	["2017", "Yooka-Laylee", "Plateforme 3D inspirée de Banjo-Kazooie."],
+	["2017", "Ys VIII Lacrimosa of Dana", "Action-RPG nerveux sur une île mystérieuse."],
+	["2018", "A Way Out", "Évasion coopérative de deux détenus."],
+	["2018", "Age of Empires Definitive Edition", "Retour du jeu fondateur en 4K."],
+	["2018", "Ancestors The Humankind Odyssey", "Survie des ancêtres de l'humanité."],
+	["2018", "Ashen", "Aventure de souls-like minimaliste."],
+	["2018", "Assassin s Creed Odyssey", "Grèce antique, choix narratifs et affrontements mythologiques."],
+	["2018", "Assetto Corsa Competizione", "Simulation officielle GT World Challenge."],
+	["2018", "Atlas", "MMO pirate en monde ouvert."],
+	["2018", "Battle Chasers Nightwar", "JRPG à la sauce Joe Madureira."],
+	["2018", "Battlefield V", "Retour à la Seconde Guerre mondiale."],
+	["2018", "BattleTech", "Mechas au tour par tour et gestion de mercenaires."],
+	["2018", "Black Desert Online", "MMO coréen au combat nerveux."],
+	["2018", "Call of Duty Black Ops 4", "Multijoueur tactique dynamique et mode Blackout."],
+	["2018", "Celeste Farewell", "Ascension de la montagne et de soi."],
+	["2018", "Celeste", "Plateforme précise sur la montagne de Celeste."],
+	["2018", "Conan Exiles", "Survie sauvage dans un monde de barbares."],
+	["2018", "Crash Bandicoot N Sane Trilogy", "Trilogie remasterisée du marsupial."],
+	["2018", "Dandara", "Metroidvania sans gravité."],
+	["2018", "Dark Souls Remastered", "Retour amélioré dans Lordran, une légende du genre."],
+	["2018", "Dawn of Man", "Survie et gestion préhistorique."],
+	["2018", "Dead Cells", "Roguelike-metroidvania nerveux."],
+	["2018", "Detroit Become Human", "Androïdes et destins croisés."],
+	["2018", "Dragon Ball Fighter Z", "Combats 3v3 spectaculaires dignes d'un anime animé par Arc System Works."],
+	["2018", "Dragon Quest Builders", "Construction et aventure à la Minecraft."],
+	["2018", "Dragon Quest XI Echoes of an Elusive Age", "JRPG classique et lumineux aux musiques mémorables."],
+	["2018", "Fallout 76", "Appalaches post-nucléaires en ligne."],
+	["2018", "Far Cry 5", "Secte et résistance dans le Montana."],
+	["2018", "Farming Simulator 19", "Agriculteur en machines détaillées."],
+	["2018", "Final Fantasy XV Windows Edition", "Road trip fantastique entre amis et monde ouvert."],
+	["2018", "Frostpunk", "Survie d'une cité face au froid."],
+	["2018", "Green Hell", "Survie amazonienne réaliste."],
+	["2018", "Gris", "Voyage artistique et poétique."],
+	["2018", "Hitman 2", "Voyages d'assassin en monde ouvert."],
+	["2018", "Hollow Knight Voidheart", "Édition étendue du royaume des insectes."],
+	["2018", "House Flipper", "Rénovation de maisons et revente."],
+	["2018", "Hunt Showdown", "Chasseurs de primes dans les marais."],
+	["2018", "Insurgency Sandstorm", "FPS tactique réaliste."],
+	["2018", "Into the Breach", "Tactique de mechas contre des kaijus."],
+	["2018", "Jurassic World Evolution", "Parc de dinosaures à gérer."],
+	["2018", "Just Cause 4", "Tempêtes extrêmes et chaos de Rico."],
+	["2018", "Kenshi", "Bac à sable de survie dans un désert."],
+	["2018", "Kingdom Come Deliverance", "RPG historique sans magie, en Bohême médiévale."],
+	["2018", "Kingdom Two Crowns", "Royaume de pièces et défense."],
+	["2018", "Life is Strange 2", "Road trip de deux frères fugitifs."],
+	["2018", "Monster Hunter Generations Ultimate", "Chasse en équipe avec styles de combat variés."],
+	["2018", "Monster Hunter World", "L'explosion internationale de la chasse aux bêtes colossales en écosystème ouvert."],
+	["2018", "Moonlighter", "Commerçant et aventurier la nuit."],
+	["2018", "Muse Dash", "Rythme à 3 pistes."],
+	["2018", "Mutant Year Zero Road to Eden", "Tactique XCOM de mutants anthropomorphes."],
+	["2018", "Ni no Kuni II Revenant Kingdom", "Fable féerique mêlant combats d'action et gestion de royaume."],
+	["2018", "Octopath Traveler", "Huit destins croisés en pixel art HD très stylisé."],
+	["2018", "Oxygen Not Included", "Gestion d'une colonie souterraine."],
+	["2018", "Paladins", "FPS de héros en équipe."],
+	["2018", "Pillars of Eternity II Deadfire", "Archipel tropical, batailles navales et RPG tactique."],
+	["2018", "Red Dead Redemption 2", "La fresque western la plus minutieuse et bouleversante de l'histoire."],
+	["2018", "Return of the Obra Dinn", "Enquête déductive en noir et blanc."],
+	["2018", "RimWorld", "Colons d'un monde éloigné et récit généré."],
+	["2018", "Rise of Industry", "Gestion de chaînes de production."],
+	["2018", "Sea of Thieves", "Pirates en coopération et aventures en mer."],
+	["2018", "Shadow of the Tomb Raider", "Dernier volet de la trilogie de Lara."],
+	["2018", "Soulcalibur VI", "Retour du combat aux armes."],
+	["2018", "Strange Brigade", "Aventure coopérative et pyramides."],
+	["2018", "Forza Horizon 4", "Course dans les saisons du Royaume-Uni."],
+	["2018", "Surviving Mars", "Colonie sur la planète rouge."],
+	["2018", "The Crew 2", "Voitures, avions et bateaux."],
+	["2018", "The Forest", "Survie cannibale et construction en forêt."],
+	["2018", "They Are Billions", "Défense de colonie contre des zombies."],
+	["2018", "Two Point Hospital", "Hôpital drôle et déjanté."],
+	["2018", "Unravel Two", "Coopération des fils de laine."],
+	["2018", "Vampyr", "Médecin vampire dans le Londres de la grippe espagnole."],
+	["2018", "Warhammer Vermintide 2", "Coopération brutale contre les hordes skavens."],
+	["2018", "Wizard of Legend", "Roguelike de sorts en 2D."],
+	["2018", "Wreckfest", "Courses de destruction réalistes."],
+	["2018", "X4 Foundations", "Simulation spatiale économique."],
+	["2019", "A Plague Tale Innocence", "Fuite d'Amicia et Hugo dans la France de la peste."],
+	["2019", "A Short Hike", "Balade apaisante de montagne."],
+	["2019", "Age of Wonders Planetfall", "Fantasy interstellaire et factions."],
+	["2019", "Anno 1800", "Révolution industrielle et commerce."],
+	["2019", "Anthem", "Exo-armures volantes et coopération."],
+	["2019", "Apex Legends", "Battle royale de héros avec capacités."],
+	["2019", "Astroneer", "Exploration colorée et bac à sable spatial."],
+	["2019", "Baba Is You", "Énigmes où l'on réécrit les règles."],
+	["2019", "Beat Saber", "Rythme et sabres en réalité virtuelle."],
+	["2019", "Beyond Two Souls", "Drame surnaturel de Jodie."],
+	["2019", "Biomutant", "Action-RPG de mutant dans un monde ouvert post-apocalyptique."],
+	["2019", "Blasphemous", "Metroidvania gothique et religieux."],
+	["2019", "Bloodstained Ritual of the Night", "Successeur de Castlevania de Koji Igarashi."],
+	["2019", "Borderlands 3", "Looter-shooter déjanté à travers plusieurs planètes."],
+	["2019", "Children of Morta", "Roguelike familial d'action."],
+	["2019", "Control", "Bureau fédéral paranormal et pouvoirs télékinétiques."],
+	["2019", "Dauntless", "Chasse aux béhémoths en coopération."],
+	["2019", "Dead or Alive 6", "Combat de combos et de contres."],
+	["2019", "Death Stranding", "Livreur dans une Amérique brisée de Kojima."],
+	["2019", "Devil May Cry 5", "Chasseurs de démons au style incomparable."],
+	["2019", "Dirt Rally 2.0", "Rallye exigeant en simulation."],
+	["2019", "Disco Elysium The Final Cut", "Version complète du RPG d'enquête."],
+	["2019", "Disco Elysium", "RPG d'enquête sans combats, d'une écriture sidérante."],
+	["2019", "Dragon Quest Builders 2", "Suite de l'île à reconstruire."],
+	["2019", "Fire Emblem Three Houses", "Tactique et vie d'académie militaire."],
+	["2019", "Gears 5", "Kait et la vérité sur les Locustes."],
+	["2019", "Ghost Recon Breakpoint", "Opérateurs chassés sur l'île d'Auroa."],
+	["2019", "Gods Will Be Watching", "Survie narrative et dilemmes moraux dans l'espace."],
+	["2019", "GreedFall", "Colonisation et diplomatie dans un monde de fantasy baroque."],
+	["2019", "Halo The Master Chief Collection", "Compilation des classiques de Halo."],
+	["2019", "Heaven s Vault", "Archéologie et traduction d'une langue ancienne."],
+	["2019", "Heavy Rain", "Thriller interactif du Origami Killer."],
+	["2019", "Hollow Knight Complete", "Royaume souterrain aux mille secrets."],
+	["2019", "Hollow Knight Silksong Preview", "Aperçu de la suite dans le royaume d'Hornet."],
+	["2019", "Hypnospace Outlaw", "Enquête dans un Internet des années 90."],
+	["2019", "Katana Zero", "Samouraï néon, temps ralenti et assassinat."],
+	["2019", "Man of Medan", "Horreur interactive sur un navire fantôme."],
+	["2019", "Metro Exodus", "Voyage à travers la Russie postnucléaire."],
+	["2019", "Monster Train", "Deck-building et ascension d'un train."],
+	["2019", "Mordhau", "Combat médiéval brutal en ligne."],
+	["2019", "Mortal Kombat 11", "Voyage temporel et gore au sommet de la technologie."],
+	["2019", "Need for Speed Heat", "Ambiance floridienne vibrante entre courses légales et clandestines."],
+	["2019", "Nioh Dark Realm", "Défis supplémentaires du premier opus."],
+	["2019", "Noita", "Roguelike où tout se détruit."],
+	["2019", "Octopath Traveler PC", "Version PC du JRPG HD-2D."],
+	["2019", "Outer Wilds", "L'enquête spatiale et scientifique vertigineuse au cœur d'un système solaire en boucle."],
+	["2019", "Oxenfree II", "Suite des phénomènes surnaturels."],
+	["2019", "Pathologic 2", "Suite de la survie mystique."],
+	["2019", "Planet Zoo", "Gestion de zoo moderne."],
+	["2019", "Rage 2", "Wasteland coloré, déjanté et explosif."],
+	["2019", "Remnant From the Ashes", "Souls-like coopératif avec tir à la troisième personne."],
+	["2019", "Resident Evil 2 Remake", "Chef-d'œuvre absolu de l'horreur moderne au commissariat de Raccoon City."],
+	["2019", "Risk of Rain 2", "Roguelike coopératif en 3D."],
+	["2019", "Rocket League Season", "Saison de football de voitures."],
+	["2019", "Samurai Shodown", "Retour du combat au sabre."],
+	["2019", "Sayonara Wild Hearts", "Pop arcade et voyage musical."],
+	["2019", "Sekiro Shadows Die Twice", "L'exigence chirurgicale du combat au sabre dans un Japon féodal impitoyable."],
+	["2019", "Slay the Spire", "Roguelike de cartes tactiques."],
+	["2019", "Space Engineers", "Construction de vaisseaux et physique."],
+	["2019", "Splitgate", "FPS à portails."],
+	["2019", "Star Wars Jedi Fallen Order", "Padawan en fuite après l'Ordre 66."],
+	["2019", "Streets of Rogue", "Roguelike de ville et de chaos."],
+	["2019", "Superliminal", "Énigmes de perspective forcée."],
+	["2019", "Tales of Monkey Island Complete", "Aventure de Guybrush."],
+	["2019", "Teamfight Tactics", "Auto-battler de League of Legends."],
+	["2019", "Tetris Effect", "Puzzle synesthésique et immersif."],
+	["2019", "The Division 2", "RPG de tir à Washington en ruine."],
+	["2019", "Days Gone", "L'action-RPG d'aventure et de survie en monde ouvert dans l'Oregon post-apocalyptique."],
+	["2019", "The Outer Worlds", "RPG satirique et coloré dans une colonie corporatiste."],
+	["2019", "Tony Hawk s Pro Skater 1 and 2", "Remake des classiques du skate."],
+	["2019", "Total War Three Kingdoms", "Chine des Trois Royaumes."],
+	["2019", "Totally Accurate Battle Simulator", "Batailles de figurines hilarantes."],
+	["2019", "Trine 4", "Dernier chapitre du trio de héros."],
+	["2019", "Tropico 6", "El Presidente et nouvelle île."],
+	["2019", "UBOAT", "Simulation de sous-marin allemand."],
+	["2019", "Call of Duty Modern Warfare", "Le reboot réaliste et immersif réinventant la saga."],
+	["2019", "Untitled Goose Game", "Oie chaotique dans un village paisible."],
+	["2019", "Wargroove", "Tactique à la Advance Wars."],
+	["2019", "Wasteland 3", "Colorado glacial, humour noir et tactique redoutable."],
+	["2019", "World War Z", "Tir coopératif contre des vagues de zombies."],
+	["2020", "Among Us", "Déduction sociale dans un vaisseau spatial."],
+	["2020", "Assassin s Creed Valhalla", "Aventure viking, raids de pillage et conquête de l'Angleterre."],
+	["2020", "Assetto Corsa Ultimate", "Édition complète de la simulation."],
+	["2020", "Call of Duty Black Ops Cold War", "Espionnage des années 80 et traque de Persée."],
+	["2020", "Call of Duty Warzone", "Battle royale du monde de Call of Duty."],
+	["2020", "Carrion", "Horreur inversée en monstre disséminé."],
+	["2020", "Coffee Talk", "Barista et conversations nocturnes."],
+	["2020", "Crusader Kings III", "Dynasties médiévales et intrigues de cour."],
+	["2020", "Cyberpunk 2077", "Plongée futuriste et cyberpunk dans les rues neonisées de Night City."],
+	["2020", "Dark Souls III The Fire Fades", "Édition complète de la fin d'un âge."],
+	["2020", "Deep Rock Galactic", "Nains mineurs en coopération."],
+	["2020", "Desperados III", "Tactique de western en temps réel."],
+	["2020", "Disintegration", "Mélange de tir et de stratégie en hoverbike."],
+	["2020", "Doom Eternal", "Massacre démoniaque nerveux et acrobatique."],
+	["2020", "Dorfromantik", "Pose de tuiles apaisante et paysages."],
+	["2020", "Dota Underlords", "Auto-battler de Valve."],
+	["2020", "Dragon Ball Z Kakarot", "Revivez l'intégralité de l'histoire de Goku en Action-RPG."],
+	["2020", "Dragon Quest XI S Definitive", "Version complète du JRPG classique."],
+	["2020", "Fall Guys", "Course de haricots déjantée à 60 joueurs."],
+	["2020", "Final Fantasy VIII Remastered", "Retour de Squall en HD."],
+	["2020", "Gears Tactics", "Tactique au tour par tour dans l'univers de Gears."],
+	["2020", "Genshin Impact", "Gacha en monde ouvert féerique et exploration libre."],
+	["2020", "Ghostrunner", "Plateforme cyberpunk à la première personne en mort subite."],
+	["2020", "Golf With Your Friends", "Mini-golf déjanté entre amis."],
+	["2020", "Granblue Fantasy Versus", "Combat 2D coloré et fluide."],
+	["2020", "Hades", "Le jeu d'action roguelike nerveux, drôle et poétique au cœur des Enfers."],
+	["2020", "Half-Life Alyx", "Retour de Half-Life en réalité virtuelle."],
+	["2020", "Halo Reach", "Retour de l'ultime bataille de Reach."],
+	["2020", "Hyperdimension", "Récit de jeu vidéo en métaphore."],
+	["2020", "Immortals Fenyx Rising", "Aventure mythologique inspirée de Breath of the Wild."],
+	["2020", "Iron Harvest", "RTS de mechas dans les années 1920."],
+	["2020", "Kentucky Route Zero", "Fiction poétique d'un Kentucky onirique."],
+	["2020", "Kingdom Come Deliverance Royal Edition", "Édition complète du RPG médiéval réaliste."],
+	["2020", "Mafia Definitive Edition", "Remake du classique gangster."],
+	["2020", "Maneater", "Requin RPG et parodie de télé-réalité."],
+	["2020", "Microsoft Flight Simulator Premium", "Édition complète du simulateur de vol."],
+	["2020", "Microsoft Flight Simulator", "La récréation photoréaliste et à l'échelle réelle de la planète entière."],
+	["2020", "Monster Sanctuary", "Capture de monstres en metroidvania."],
+	["2020", "Mortal Shell", "Souls-like sombre et très technique à base de coquilles."],
+	["2020", "Mount and Blade II Bannerlord", "Retour de la guerre médiévale à grande échelle."],
+	["2020", "Neon Abyss", "Roguelike de tir en néon."],
+	["2020", "Nioh 2", "Préquel plus brutal avec pouvoirs de yokai."],
+	["2020", "Ori and the Will of the Wisps", "Conte lumineux et metroidvania poignant."],
+	["2020", "Per Aspera", "Terraformation de Mars en 4X."],
+	["2020", "Persona 4 Golden", "Enquête rurale, vie lycéenne et donjons mentaux."],
+	["2020", "Phantasy Star Online 2 New Genesis", "Nouvelle version du MMO d'action."],
+	["2020", "Phantasy Star Online 2", "MMO d'action à l'esthétique japonaise."],
+	["2020", "Phasmophobia", "Chasse aux fantômes en coopération."],
+	["2020", "Resident Evil 3 Remake", "Action survitaminée et fuite effrénée face à Nemesis."],
+	["2020", "Rogue Legacy 2", "Suite de la dynastie roguelite."],
+	["2020", "Skul The Hero Slayer", "Roguelike d'un crâne changeant."],
+	["2020", "Spelunky 2", "Roguelike de plateforme et d'exploration."],
+	["2020", "Spiritfarer", "Passeur d'âmes et gestion apaisante."],
+	["2020", "Squad", "FPS militaire en équipe et logistique."],
+	["2020", "Star Wars Squadrons Elite", "Pilotage de chasseurs en équipe."],
+	["2020", "Star Wars Squadrons", "Combats spatiaux en vue du cockpit."],
+	["2020", "The Last of Us Part II", "Le drame de la vengeance viscéral, brutal et bouleversant."],
+	["2020", "Torchlight III", "Troisième volet du hack and slash de la franchise."],
+	["2020", "Total War Saga Troy", "Guerre de Troie en stratégie."],
+	["2020", "Trackmania", "Courses d'arcade sans fin et records."],
+	["2020", "Valorant Champions", "Compétition tactique en équipe."],
+	["2020", "Valorant", "FPS tactique de héros aux capacités."],
+	["2020", "Watch Dogs Legion", "Londres futuriste et recrutement de citoyens."],
+	["2020", "Yakuza Like a Dragon", "RPG au tour par tour dans les rues de Yokohama."],
+	["2021", "Age of Empires IV", "Le retour stratégique des grandes batailles historiques médiévales."],
+	["2021", "Alan Wake Remastered", "Remaster du thriller de Remedy."],
+	["2021", "Aliens Fireteam Elite", "Tir coopératif contre les xénomorphes."],
+	["2021", "Back 4 Blood Tunnels", "Coopération contre les infectés."],
+	["2021", "Back 4 Blood", "Coopération zombie des créateurs de Left 4 Dead."],
+	["2021", "Battlefield 2042", "Guerre totale à 128 joueurs."],
+	["2021", "Call of Duty Vanguard", "Forces alliées de la Seconde Guerre mondiale."],
+	["2021", "Chernobylite", "Survie et RPG au cœur de Tchernobyl."],
+	["2021", "Chivalry 2", "Mêlée médiévale à grande échelle."],
+	["2021", "Chorus", "Combat spatial et vaisseau vivant."],
+	["2021", "Cruelty Squad", "FPS grotesque et expérimental."],
+	["2021", "Death s Door", "Action-aventure de corbeau faucheur."],
+	["2021", "Deathloop", "Boucle temporelle et assassins dans Blackreef."],
+	["2021", "Far Cry 6", "Révolution cubaine et dictateur Antón Castillo."],
+	["2021", "Farming Simulator 22", "Fermier moderne en coopération."],
+	["2021", "Final Fantasy VII Remake Intergrade", "Midgar réinventée en action et en narration."],
+	["2021", "Griftlands", "Deck-building et RPG de roguelike."],
+	["2021", "Guilty Gear Strive", "Combat 2D à l'esthétique de dessin animé."],
+	["2021", "Halo Infinite", "Retour du Master Chief sur l'anneau Zeta."],
+	["2021", "Hell Let Loose", "FPS de guerre en 50 contre 50."],
+	["2021", "Hitman 3", "Dernier chapitre de la trilogie de l'agent 47."],
+	["2021", "Humankind", "4X historique avec cultures changeantes."],
+	["2021", "Inscryption", "Cartes, horreur et métafiction."],
+	["2021", "It Takes Two", "L'aventure coopérative la plus inventive et créative de sa génération."],
+	["2021", "Kena Bridge of Spirits", "Aventure de guide d'esprits."],
+	["2021", "Knockout City", "Balle prisonnière en équipe."],
+	["2021", "Little Nightmares II", "Horreur enfantine et mondes inquiétants."],
+	["2021", "Loop Hero", "Boucle de génération de monde en rétro."],
+	["2021", "Lost Judgment", "Enquête de procès à Yokohama."],
+	["2021", "Mass Effect Legendary Edition", "Trilogie remasterisée de Shepard."],
+	["2021", "Medieval Dynasty", "Survie et bâtisse au Moyen Âge."],
+	["2021", "Metroid Dread", "Le retour triomphant de Samus Aran."],
+	["2021", "Monster Hunter Rise", "Chasse rapide avec Wirebug et fidèle Palamute."],
+	["2021", "Mount and Blade II Bannerlord Warbands", "Extension des armées errantes."],
+	["2021", "Mythic Dungeon", "Aventure de donjon en équipe."],
+	["2021", "New World", "MMO de colonisation d'Aeternum."],
+	["2021", "Outriders", "Looter-shooter coopératif sur la planète Enoch."],
+	["2021", "Pathfinder Wrath of the Righteous", "Croisade contre les démons, RPG dense et profond."],
+	["2021", "Pokemon Unite", "MOBA de monstres de poche."],
+	["2021", "Psychonauts 2", "Retour dans les esprits des mentalistes."],
+	["2021", "Resident Evil Village", "Épopée gothique et macabre d'Ethan Winters."],
+	["2021", "Rhythm Doctor", "Rythme à une main sur un défibrillateur."],
+	["2021", "Riders Republic", "Sports extrêmes en monde ouvert."],
+	["2021", "Sable", "Exploration poétique d'un désert."],
+	["2021", "Scarlet Nexus", "Action psychique et romance dans un futur extravagant."],
+	["2021", "Shin Megami Tensei III Nocturne HD", "Retour du RPG culte d'Atlus."],
+	["2021", "Shin Megami Tensei V", "Apocalypse démoniaque et fusion de créatures."],
+	["2021", "Subnautica Below Zero", "Suite sous les glaces polaires."],
+	["2021", "Super Mega Baseball 3", "Baseball d'arcade accessible."],
+	["2021", "Tainted Grail Conquest", "Roguelike RPG de survie dans l'Avalon sombre."],
+	["2021", "Tales of Arise", "JRPG d'action éclatant et émouvant sur deux mondes."],
+	["2021", "Tales of Vesperia Definitive", "Version complète de l'épopée de Yuri."],
+	["2021", "The Ascent", "Action cyberpunk isométrique à tirs."],
+	["2021", "Total War Warhammer III", "Les Royaumes du Chaos."],
+	["2021", "Tropico 6 Next Gen", "Dictateur en pleine reconstruction."],
+	["2021", "Unpacking", "Déballage de cartons et récit intime."],
+	["2021", "Valheim", "Survie viking coopérative à l'esthétique low-poly."],
+	["2021", "Wildermyth", "Tactique narrative en papier découpé."],
+	["2022", "A Plague Tale Requiem", "Suite de la fuite d'Amicia et Hugo."],
+	["2022", "Against the Storm", "Gestion roguelike sous la pluie."],
+	["2022", "Arma Reforger", "Guerre moderne en grand bac à sable."],
+	["2022", "Bayonetta Origins", "Conte mystique de la sorcière en miniature."],
+	["2022", "Chained Echoes", "JRPG indépendant inspiré des classiques 16 bits."],
+	["2022", "Citizen Sleeper", "RPG narratif d'un corps artificiel."],
+	["2022", "Cult of the Lamb", "Gestion d'une secte et exploration roguelike."],
+	["2022", "Dark Deception Monsters", "Horreur à la lumière des néons."],
+	["2022", "Dark Souls Rebirth", "Édition remaniée de la légende."],
+	["2022", "Dirt 5", "Courses d'arcade avec modes variés."],
+	["2022", "Disney Speedstorm", "Course d'arcade avec personnages Disney."],
+	["2022", "Dragon Ball Z Kakarot Complete", "Revivez l'histoire de Goku."],
+	["2022", "Dune Spice Wars", "4X de faction sur Arrakis."],
+	["2022", "Dwarf Fortress", "Simulation d'une colonie de nains."],
+	["2022", "Dying Light 2 Stay Human", "Parkour et choix dans une ville post-apocalyptique."],
+	["2022", "eFootball 2022", "Football gratuit de Konami."],
+	["2022", "Elden Ring", "Monde ouvert de FromSoftware co-écrit avec G.R.R. Martin."],
+	["2022", "Evil Dead The Game", "Coopération contre les Deadites."],
+	["2022", "Evil West", "Chasse aux vampires dans l'Ouest américain."],
+	["2022", "F1 22", "Saison de Formule 1 en simulation."],
+	["2022", "FIFA 23", "Dernier football sous la licence FIFA."],
+	["2022", "Frostpunk Complete", "Survie dans le froid et choix éthiques."],
+	["2022", "God of War 4", "Kratos et Atreus en terres nordiques."],
+	["2022", "Gotham Knights", "Quatre héros de Gotham en l'absence de Batman."],
+	["2022", "Gran Turismo Sport", "Simulation de course compétitive."],
+	["2022", "Grid Legends", "Course et histoire de pilotes."],
+	["2022", "Grounded", "Survie à taille d'insecte dans un jardin."],
+	["2022", "Hardspace Shipbreaker", "Démontage de vaisseaux en gravité zéro."],
+	["2022", "Heroes of Might and Magic Olden Era", "Retour de la stratégie classique."],
+	["2022", "Hogwarts Mystery", "Roman scolaire magique à l'école de sorciers."],
+	["2022", "Horizon Zero Dawn Complete", "Édition complète du monde aux machines."],
+	["2022", "Immortality", "Enquête de films cachés d'une actrice."],
+	["2022", "King of Fighters XV", "Combat 3v3 de SNK."],
+	["2022", "Lost Ark", "Action-RPG massivement multijoueur à l'isométrique."],
+	["2022", "Madden NFL 23", "Football américain de simulation."],
+	["2022", "Marvel s Guardians of the Galaxy", "Gardiens et choix d'équipe aux dialogues vifs."],
+	["2022", "Marvel s Midnight Suns", "Cartes tactiques et super-héros contre Lilith."],
+	["2022", "Marvel s Spider Man Miles Morales", "Prenez les rênes de protecteur de Harlem."],
+	["2022", "Marvel s Spider Man Remastered", "Acrobaties spectaculaires de Peter Parker."],
+	["2022", "Mechabellum", "Auto-battler de mechas."],
+	["2022", "MultiVersus", "Combat de plateforme de dessins animés."],
+	["2022", "Need for Speed Unbound", "Style artistique unique mêlant réalisme et street art."],
+	["2022", "Neon White", "Speedrun de cartes en FPS."],
+	["2022", "NHL 23", "Hockey sur glace de simulation."],
+	["2022", "Pathfinder Wrath Enhanced", "Édition améliorée du RPG de croisade."],
+	["2022", "Pentiment", "Enquête médiévale en enluminures."],
+	["2022", "Persona 5 Royal", "Voleurs de cœurs et vie lycéenne à Tokyo."],
+	["2022", "PGA Tour 2K23", "Golf de simulation avec pros."],
+	["2022", "PowerWash Simulator", "Nettoyage apaisant au jet d'eau."],
+	["2022", "Raft", "Survie sur un radeau."],
+	["2022", "Rainbow Six Extraction", "Coopération contre les parasites."],
+	["2022", "Return to Monkey Island", "Retour de Guybrush Threepwood."],
+	["2022", "Scorn", "Horreur biomécanique et énigmes."],
+	["2022", "Shadow Gambit The Cursed Crew", "Infiltration tactique de pirates fantômes."],
+	["2022", "Sifu", "Beat'em all de kung-fu avec vieillissement du héros."],
+	["2022", "Signalis", "Horreur rétro-futuriste et mystère."],
+	["2022", "Sniper Elite 5", "Résistance française et tirs spectaculaires."],
+	["2022", "Songs of Conquest", "Tactique à la Heroes of Might and Magic."],
+	["2022", "Sonic Frontiers", "Sonic en monde ouvert."],
+	["2022", "Sonic Origins", "Compilation des classiques du hérisson."],
+	["2022", "Soul Hackers 2", "RPG cyberpunk et démons sous contrat."],
+	["2022", "Soulstice", "Action à deux héroïnes liées par une âme."],
+	["2022", "Stray", "L'exploration originale d'un monde cyberpunk par un chat."],
+	["2022", "Terra Nil", "Reconstruction apaisante de la nature."],
+	["2022", "The Quarry Deluxe", "Horreur interactive à choix."],
+	["2022", "The Quarry", "Horreur interactive de camp d'été."],
+	["2022", "Tiny Tina s Wonderlands", "Fantasy déjantée dans une partie de jeu de rôle."],
+	["2022", "Triangle Strategy", "Tactique et choix politiques en HD-2D."],
+	["2022", "Tunic Complete", "Aventure de petit renard et mystères."],
+	["2022", "Tunic", "Aventure inspirée de Zelda en isométrique."],
+	["2022", "Two Point Campus", "Université et gestion des étudiants."],
+	["2022", "Vampire Survivors", "Horde de monstres et progression arcade."],
+	["2022", "Warhammer 40000 Darktide", "Coopération sanglante contre les hordes du chaos."],
+	["2022", "Wreckfest Complete", "Compétition destructrice."],
+	["2022", "WWE 2K22", "Catch simulé et modes de carrière."],
+	["2023", "Age of Wonders 4", "Fantasy, héros et civilisations."],
+	["2023", "Alan Wake 2", "Le thriller psychologique et horrifique brillant et hypnotique."],
+	["2023", "Armored Core VI Fires of Rubicon", "Combats de mechas nerveux sur Rubicon."],
+	["2023", "Assassin s Creed Mirage", "Retour aux sources furtives et urbaines à Bagdad."],
+	["2023", "Atlas Fallen", "Action-RPG de dunes et d'armes de sable."],
+	["2023", "Atomic Heart", "Uchronie soviétique et robots détraqués."],
+	["2023", "Baldur s Gate 3 Deluxe", "Édition complète du RPG de l'année 2023."],
+	["2023", "Baldur s Gate 3", "Le RPG de l'année et chef-d'œuvre absolu de choix."],
+	["2023", "Battlebit Remastered", "Guerre à 254 joueurs en voxel."],
+	["2023", "Blasphemous II", "Suite du metroidvania religieux."],
+	["2023", "Bomb Rush Cyberfunk", "Graffiti, rollers et funk futuriste."],
+	["2023", "Brotato", "Survivor roguelike aux légumes."],
+	["2023", "Chants of Sennaar", "Déchiffrez des langues dans une tour."],
+	["2023", "Cities Skylines II", "Suite de la gestion de ville."],
+	["2023", "Cocoon", "Énigmes de mondes dans des mondes."],
+	["2023", "Coral Island", "Simulation de ferme sous-marine."],
+	["2023", "Counter-Strike 2", "Nouvelle génération du FPS légendaire."],
+	["2023", "Cricket 24", "Cricket de simulation."],
+	["2023", "Darkest Dungeon II", "Suite du RPG gothique de stress."],
+	["2023", "Dead Island 2", "Zombies gores à Los Angeles."],
+	["2023", "Dead Space Remake", "Refonte spectaculaire de l'horreur spatiale."],
+	["2023", "Diablo IV", "Retour des ténèbres de Sanctuaire en monde ouvert."],
+	["2023", "Disney Dreamlight Valley", "Vie de village avec les personnages Disney."],
+	["2023", "Dredge", "Pêche et horreur lovecraftienne."],
+	["2023", "EA Sports FC 24", "Football sous nouvelle licence."],
+	["2023", "EA Sports WRC", "Rallye dans les spéciales du championnat."],
+	["2023", "Everspace 2", "Combat spatial en monde ouvert."],
+	["2023", "F1 23", "Saison 2023 en simulation."],
+	["2023", "Fae Farm", "Simulation magique en coopération."],
+	["2023", "Forspoken", "Action-RPG et magie à Athia."],
+	["2023", "Forza Motorsport", "Retour de la simulation de course."],
+	["2023", "Gunfire Reborn", "Roguelike de tir coopératif."],
+	["2023", "Hi-Fi Rush", "Action rythmée où chaque coup suit la musique."],
+	["2023", "Hogwarts Legacy Deluxe", "Monde ouvert à Poudlard, édition complète."],
+	["2023", "Hogwarts Legacy", "Monde ouvert magique dans l'école de Poudlard."],
+	["2023", "Homeworld 3", "Retour de la guerre spatiale tactique."],
+	["2023", "Honkai Star Rail", "RPG spatial au tour par tour."],
+	["2023", "Hot Wheels Unleashed 2", "Course de petites voitures."],
+	["2023", "Humanity Complete", "Foules de gens et de chiens à guider."],
+	["2023", "Humanity", "Puzzle de foules et de chiens."],
+	["2023", "Jagged Alliance 3", "Tactique de mercenaires au tour par tour."],
+	["2023", "Layers of Fear", "Horreur psychologique d'un peintre fou."],
+	["2023", "Lethal Company", "Horreur coopérative de collecte de ferraille."],
+	["2023", "Lies of P", "Pinocchio dans un souls-like belle-époque sombre."],
+	["2023", "Madden NFL 24", "Football américain saison 2023."],
+	["2023", "Mortal Kombat 1", "Reboot sanglant de l'univers avec Kameo Fighters."],
+	["2023", "Naruto X Boruto Ultimate Ninja Storm Connections", "Compilation ultime avec casting massif."],
+	["2023", "NBA 2K24", "Basket-ball de simulation."],
+	["2023", "Need for Speed Unbound Vol 5", "Style street art en course."],
+	["2023", "NHL 24", "Hockey sur glace saison 2023."],
+	["2023", "Octopath Traveler II", "Huit nouveaux voyageurs dans un monde HD-2D."],
+	["2023", "Payday 3", "Braquages coopératifs à New York."],
+	["2023", "PGA Tour 2K23 Deluxe", "Golf de simulation."],
+	["2023", "Pikmin", "Gestion de petites créatures."],
+	["2023", "Pizza Tower", "Plateforme frénétique à la Wario Land."],
+	["2023", "Planet Coaster 2", "Suite de la création de parcs."],
+	["2023", "Ravenswatch", "Roguelike de contes et légendes."],
+	["2023", "Ready or Not", "FPS tactique de police hyper réaliste."],
+	["2023", "Remnant II", "Souls-like à l'arme à feu et mondes aléatoires."],
+	["2023", "Resident Evil 4 Remake", "Modernisation parfaite et nerveuse du chef-d'œuvre."],
+	["2023", "Returnal", "Boucle de mort sur Atropos."],
+	["2023", "Riders Republic Racing", "Courses de sports extrêmes."],
+	["2023", "Rugby 22", "Rugby de simulation."],
+	["2023", "Sea of Stars", "JRPG pixel art lumineux inspiré de Chrono Trigger."],
+	["2023", "Sons of the Forest", "Suite de survie et de cannibales."],
+	["2023", "Star Wars Jedi Survivor Deluxe", "Édition complète de l'aventure de Cal Kestis."],
+	["2023", "Star Wars Jedi Survivor", "Cal Kestis face à l'Empire dans une aventure d'action."],
+	["2023", "Starfield", "Le grand RPG spatial de Bethesda."],
+	["2023", "Street Fighter 6", "Mode solo World Tour révolutionnaire."],
+	["2023", "Tchia", "Aventure de monde ouvert inspirée de la Nouvelle-Calédonie."],
+	["2023", "Texas Chain Saw Massacre", "Horreur asymétrique à Leatherface."],
+	["2023", "The Crew Motorfest", "Festival de courses à Hawaï."],
+	["2023", "The Finals", "Arène destructible en équipe."],
+	["2023", "The Last of Us Part I", "Remake du récit de Joel et Ellie."],
+	["2023", "The Legend of Zelda Tears of the Kingdom", "La liberté créative absolue grâce à la fusion."],
+	["2023", "Trackmania Turbo", "Courses de vitesse et records."],
+	["2023", "Trails into Reverie", "Capitulation de l'épopée Trails."],
+	["2023", "Viewfinder", "Énigmes de photographies à reconstituer."],
+	["2023", "Wanderstop", "Aventure apaisante de gestion de salon de thé."],
+	["2023", "Wartales", "Gestion de mercenaires et RPG tactique."],
+	["2023", "Wild Hearts", "Chasse aux bêtes de nature et construction."],
+	["2023", "Wildfrost", "Deck-building glacial."],
+	["2023", "Wo Long Fallen Dynasty", "Action-RPG de la fin des Han."],
+	["2023", "WWE 2K23", "Catch et superstars."],
+	["2024", "Age of Mythology Retold", "Retour des dieux de l'Antiquité."],
+	["2024", "Alone in the Dark", "Reboot de la franchise d'horreur culte."],
+	["2024", "Animal Well", "Énigmes d'un monde interconnecté."],
+	["2024", "Another Crab s Treasure", "Souls-like drôle sous la mer."],
+	["2024", "Assetto Corsa Evo", "Nouvelle génération de simulation."],
+	["2024", "Balatro", "Poker roguelike addictif et déroutant."],
+	["2024", "Black Myth Wukong Complete", "Combat d'Écran contre les Démons."],
+	["2024", "Black Myth Wukong", "L'action-RPG spectaculaire inspiré du voyage vers l'Ouest."],
+	["2024", "Call of Duty Black Ops 6", "Action survitaminée post-guerre froide."],
+	["2024", "Caves of Qud", "Roguelike de mutants dans le désert."],
+	["2024", "Content Warning", "Vidéastes en quête de buzz dans un monde horrifique."],
+	["2024", "Dead Rising Deluxe Remaster", "Zombies dans un centre commercial."],
+	["2024", "Dragon Age The Veilguard", "Le grand retour de la franchise de fantasy épique."],
+	["2024", "Dragon Ball Sparking ZERO", "Le retour tant attendu de la série Budokai Tenkaichi."],
+	["2024", "Dragon Ball The Breakers", "Survie asymétrique à la Dragon Ball."],
+	["2024", "Dragon Quest Monsters The Dark Prince", "Capture de monstres avec un prince déchu."],
+	["2024", "Dragon s Dogma 2 Deluxe", "Aventure d'action à pions."],
+	["2024", "Dragon s Dogma 2", "Action-RPG de fantasy en monde ouvert avec compagnons."],
+	["2024", "EA Sports College Football", "Football américain universitaire."],
+	["2024", "EA Sports FC 25 Ultimate", "Football saison 2025."],
+	["2024", "EA Sports FC 25", "Introduction du système tactique FC IQ et matchs Rush."],
+	["2024", "Elden Ring Shadow of the Erdtree", "Extension colossale d'Elden Ring dans les Terres d'Ombre."],
+	["2024", "Enshrouded", "Survie, construction et aventure en coopération."],
+	["2024", "F1 24", "Saison 2024 en simulation."],
+	["2024", "Fear the Spotlight", "Horreur de lycée et enquête."],
+	["2024", "Final Fantasy VII Rebirth", "L'immense voyage au-delà de Midgar en monde ouvert."],
+	["2024", "Final Fantasy XVI", "Fantasy sombre et combats spectaculaires."],
+	["2024", "Forza Horizon 5", "Mexique en monde ouvert."],
+	["2024", "Frostpunk 2", "Gestion de survie d'une cité glaciale."],
+	["2024", "Ghost of Tsushima Director s Cut", "Le samouraï Jin Sakai défend l'île de Tsushima."],
+	["2024", "God of War Ragnarok", "Kratos et Atreus affrontent le Ragnarök."],
+	["2024", "Granblue Fantasy Relink", "Action-RPG coopératif aux combats spectaculaires."],
+	["2024", "Hades II Early Access", "Mélinoé chasse Chronos."],
+	["2024", "Helldivers 2", "Le jeu de tir coopératif satyrique et explosif."],
+	["2024", "Hot Wheels Unleashed", "Course de petites voitures."],
+	["2024", "Indiana Jones and the Great Circle", "Aventure à la première personne sur les traces de l'archéologue."],
+	["2024", "Last Epoch", "Action-RPG de voyage dans le temps."],
+	["2024", "Like a Dragon Infinite Wealth", "Ichiban à Hawaï entre combats et mini-jeux."],
+	["2024", "Madden NFL 25", "Football américain saison 2024."],
+	["2024", "Manor Lords", "Gestion de seigneurie médiévale et bataille tactique."],
+	["2024", "Marvel Rivals", "Jeu de tir héroïque en équipe 6 contre 6."],
+	["2024", "Marvel vs Capcom Fighting Collection", "Compilation des combats de super-héros."],
+	["2024", "Metaphor ReFantazio Special", "Quête politique dans un monde de fantasy."],
+	["2024", "Metaphor ReFantazio", "RPG de fantasy d'Atlus par l'équipe de Persona."],
+	["2024", "Microsoft Flight Simulator 2024", "La simulation de vol photoréaliste revue en profondeur."],
+	["2024", "Mortal Kombat Onslaught", "Aventure de collection de personnages."],
+	["2024", "Mouthwashing", "Horreur psychologique à bord d'un vaisseau."],
+	["2024", "NBA 2K25", "Basket-ball saison 2025."],
+	["2024", "Nightingale", "Survie de royaumes féeriques et exploration."],
+	["2024", "Once Human", "Survie occulte et construction en monde post-apocalyptique."],
+	["2024", "Pacific Drive", "Survie en voiture dans une zone d'exclusion."],
+	["2024", "Palia", "Simulation sociale en ligne gratuite."],
+	["2024", "Palworld", "Capture de créatures, survie et construction."],
+	["2024", "Path of Exile 2", "Suite du hack and slash à l'arbre colossal."],
+	["2024", "Persona 3 Reload", "Retour de l'heure noire et des liens d'amitié."],
+	["2024", "Phantom Liberty", "Extension d'espionnage de Cyberpunk 2077."],
+	["2024", "Planet of Lana", "Aventure poétique d'une fillette et de sa bête."],
+	["2024", "Prince of Persia The Lost Crown", "Metroidvania acrobatique et élégant."],
+	["2024", "Rise of Industry 2", "Gestion de chaînes industrielles."],
+	["2024", "Rise of the Ronin", "Samouraï du Japon de la fin d'Edo."],
+	["2024", "Rogue Trader", "RPG de Warhammer 40000 en équipe."],
+	["2024", "S.T.A.L.K.E.R. 2 Heart of Chornobyl", "Survie et exploration en monde ouvert."],
+	["2024", "Satisfactory", "Usines en monde ouvert extraterrestre."],
+	["2024", "Senua s Saga Hellblade II", "Voyage sombre et cinématographique en Islande."],
+	["2024", "Sid Meier s Civilization VII Preview", "Aperçu de la nouvelle ère."],
+	["2024", "Silent Hill 2 Remake", "Refonte moderne et oppressante du classique."],
+	["2024", "Skull and Bones", "Piraterie en ligne dans l'océan Indien."],
+	["2024", "Star Wars Outlaws", "Premier monde ouvert Star Wars : Kay Vess."],
+	["2024", "Stellar Blade PC", "Action spectaculaire de la mission Eve."],
+	["2024", "Stellar Blade", "Action-RPG futuriste spectaculaire."],
+	["2024", "Sunderfolk", "Tactique coopérative en famille."],
+	["2024", "Tekken 8", "Graphismes next-gen époustouflants et combat agressif."],
+	["2024", "The First Descendant", "Looter-shooter de science-fiction coopératif."],
+	["2024", "The Outlast Trials", "Horreur coopérative d'épreuves cruelles."],
+	["2024", "The Planet Crafter", "Terraformation en survie."],
+	["2024", "Throne and Liberty", "MMORPG coréen en monde ouvert."],
+	["2024", "Tiny Glade", "Construction de dioramas médiévaux."],
+	["2024", "UFO 50", "Cinquante jeux rétro dans une collection."],
+	["2024", "Unicorn Overlord", "Tactique en temps réel avec grandes armées."],
+	["2024", "Until Dawn", "Remake de l'horreur interactive à la montagne."],
+	["2024", "V Rising", "Survie de vampire en monde ouvert."],
+	["2024", "Visions of Mana", "Retour de l'action-RPG sur l'arbre de Mana."],
+	["2024", "Warhammer 40000 Space Marine 2 Complete", "Édition complète des combats Tyranides."],
+	["2024", "Warhammer 40000 Space Marine 2", "Combats gores et massifs contre les essaims Tyranides."],
+	["2024", "Warno", "Guerre froide en temps réel à grande échelle."],
+	["2024", "Wuthering Waves", "Action-RPG fantastique en monde ouvert."],
+	["2024", "WWE 2K24", "Catch et superstars saison 2024."],
+	["2024", "Zenless Zone Zero", "Action urbaine et style néon en gacha."],
+	["2025", "Absolum", "Beat'em all roguelike en pixel art."],
+	["2025", "Anno 117 Pax Romana", "Empire romain et gestion de provinces."],
+	["2025", "Assassin s Creed Shadows", "Jeu furtif et action dans le Japon féodal."],
+	["2025", "Atelier Yumia", "Alchimie et exploration en monde ouvert."],
+	["2025", "Avowed", "RPG de fantasy à la première personne d'Obsidian."],
+	["2025", "Ball x Pit", "Roguelike de balles et de bâtiment."],
+	["2025", "Battlefield 6", "Retour du FPS de guerre totale."],
+	["2025", "Blue Prince", "Énigme architecturale en pièces à construire."],
+	["2025", "Borderlands 4", "Looter-shooter déjanté sur la planète Kairos."],
+	["2025", "Call of Duty Black Ops 7", "Nouvelle génération de guerre clandestine."],
+	["2025", "Civilization VII", "La nouvelle ère de gestion géopolitique."],
+	["2025", "Clair Obscur Expedition 33", "JRPG tour par tour inspiré de la Belle Époque."],
+	["2025", "Dawn of War IV", "Retour du RTS de guerre de Warhammer."],
+	["2025", "Death Stranding 2 On The Beach", "L'odyssée fantastique signée Hideo Kojima."],
+	["2025", "Dispatch", "Aventure de super-héros et gestion d'équipe."],
+	["2025", "Doom The Dark Ages", "Prélude brutal et médiéval-fantastique de la saga FPS."],
+	["2025", "Dragon Quest I and II HD-2D Remake", "Retour des origines du JRPG."],
+	["2025", "Dune Awakening", "Survie MMO dans le désert d'Arrakis."],
+	["2025", "Dying Light The Beast", "Survie et parkour avec Kyle Crane de retour."],
+	["2025", "EA Sports College Football 26", "Football américain universitaire 2026."],
+	["2025", "EA Sports FC 26", "Nouvelle saison du football EA."],
+	["2025", "Elden Ring Nightreign", "Spin-off coopératif d'Elden Ring à trois joueurs."],
+	["2025", "Escape from Duckov", "Extraction avec des canards."],
+	["2025", "F1 25", "Saison 2025 en simulation."],
+	["2025", "Fatal Fury City of the Wolves", "Retour du combat culte de SNK."],
+	["2025", "Football Manager 26 Console", "Gestion de football."],
+	["2025", "Football Manager 26", "Gestion de football saison 2026."],
+	["2025", "Ghost of Yotei", "Suite spirituelle de l'aventure épique de guerrière."],
+	["2025", "Hades II", "Suite de l'action roguelike des Enfers."],
+	["2025", "Hollow Knight Silksong", "Suite de Hornet dans Pharloom."],
+	["2025", "Kingdom Come Deliverance II", "RPG médiéval réaliste en Bohême."],
+	["2025", "Madden NFL 26", "Football américain saison 2025."],
+	["2025", "Mafia The Old Country", "Ascension d'un jeune mafieux en Sicile."],
+	["2025", "Mage Arena", "Sorts vocaux en coopération."],
+	["2025", "Marvel s Spider Man 2", "Incarnez Peter et Miles face à Venom."],
+	["2025", "Mechabellum", "Auto-battler de mechas en version finale."],
+	["2025", "Megabonk", "Roguelike de survivor en 3D."],
+	["2025", "Metal Gear Solid Delta Snake Eater", "Remake fidèle de la mission de Snake en 1964."],
+	["2025", "Monster Hunter Stories 3", "Chasse et élevage de monstres."],
+	["2025", "Monster Hunter Wilds", "La chasse aux monstres en monde ouvert dynamique."],
+	["2025", "NBA 2K26", "Basket-ball saison 2026."],
+	["2025", "Ninja Gaiden 4", "Action brutale et ultra-rapide avec Ryu Hayabusa."],
+	["2025", "Peak", "Escalade coopérative absurde."],
+	["2025", "R.E.P.O.", "Récupération de reliques et horreur coopérative."],
+	["2025", "Schedule I", "Simulation criminelle de trafic."],
+	["2025", "Silent Hill f", "Horreur psychologique dans le Japon des années 60."],
+	["2025", "Split Fiction", "Aventure coopérative inventive à deux joueurs."],
+	["2025", "Sword of the Sea", "Aventure poétique en planche sur dunes d'eau."],
+	["2025", "The Elder Scrolls IV Oblivion Remastered", "Le classique de Cyrodiil en UE5."],
+	["2025", "The Hundred Line Last Defense Academy", "Visual novel tactique et survie."],
+	["2025", "The Outer Worlds 2", "RPG satirique d'Obsidian en exploration spatiale."],
+	["2025", "Total War Warhammer 40000", "Warhammer 40000 en Total War."],
+	["2025", "Virtua Fighter 5 R.E.V.O.", "Retour du combat 3D de Sega."],
+	["2025", "Bleach Rebirth of Souls", "Combat d'action 3D des Shinigamis."],
+	["2025", "WWE 2K25", "Catch et superstars saison 2025."],
+	["2025", "Ys X Proud Nordics", "Aventure de pirates dans les eaux nordiques."],
+	["2025", "Blood Message", "Action-RPG de combats au sabre dans la Chine ancienne."],
+	["2026", "007 First Light", "Origines de James Bond par IO Interactive."],
+	["2026", "Call of Duty Modern Warfare 4", "Nouvelle campagne par Infinity Ward."],
+	["2026", "Control Resonant", "Suite de Control par Remedy."],
+	["2026", "Crimson Desert", "Action-aventure épique par Pearl Abyss."],
+	["2026", "Fable", "Le retour magique de la célèbre licence de RPG."],
+	["2026", "Forza Horizon 6", "Course en monde ouvert dans un décor japonais."],
+	["2026", "Gears of War E-Day", "Retour du TPS tactique le jour de l'Émergence."],
+	["2026", "GTA VI", "Le sommet absolu du crime en monde ouvert à Vice City."],
+	["2026", "Metroid Prime 4 Beyond", "La nouvelle aventure spatiale de Samus Aran."],
+	["2026", "Tides of Annihilation", "Action-RPG sous UE5 d'inspiration arthurienne."],
+	["2026", "Phantom Blade Zero", "Action-RPG wuxia ultra-nerveux et stylé."],
+	["2026", "Invincible VS", "Combat d'action super-héroïque basé sur les comics."],
+	["2026", "Pragmata", "Aventure de science-fiction de Capcom sur la Lune."],
+	["2026", "Resident Evil Requiem", "Le nouveau chapitre sombre et terrifiant."]
+];
+
+document.addEventListener("DOMContentLoaded", () => {
+	initImageObserver();
+	if (clientName) {
+		updateUserProfileDisplay(clientName);
+	}
+	renderPcGames();
+	updateCartBadge();
+});
+
+function updateUserProfileDisplay(name) {
+	const badge = document.getElementById('userProfileBadge');
+	const nameSpan = document.getElementById('navClientName');
+	if (badge && nameSpan) {
+		nameSpan.innerText = name;
+		badge.style.display = 'flex';
+	}
+}
+
+function slugify(text) {
+	return text.toString().toLowerCase()
+		.normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+		.replace(/['']/g, '-')
+		.replace(/[^a-z0-9 -]/g, '')
+		.replace(/\s+/g, '-')
+		.replace(/-+/g, '-');
+}
+
+function renderPcGames() {
+	const grid = document.getElementById('pcGameGrid');
+	grid.innerHTML = '';
+	
+	const filteredGames = pcGamesData.filter(game => {
+		const [year, name] = game;
+		const fullName = `${name} ${year}`.toLowerCase();
+		return fullName.includes(currentSearchQuery);
+	});
+
+	const totalItems = filteredGames.length;
+	const totalPages = Math.ceil(totalItems / itemsPerPage) || 1;
+	
+	if (currentPage > totalPages) currentPage = totalPages;
+	
+	const startIndex = (currentPage - 1) * itemsPerPage;
+	const endIndex = startIndex + itemsPerPage;
+	const paginatedGames = filteredGames.slice(startIndex, endIndex);
+
+	paginatedGames.forEach(game => {
+		const [year, name, info] = game;
+		const imageFileName = `images/${slugify(name)}.jpg`;
+		const fullGameName = `${name} (${year})`;
+		const orderText = `Enchanté Mr Sev, c'est ${clientName || 'un client'}. Je souhaite commander ${fullGameName} sur PC.`;
+		const waLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(orderText)}`;
+		
+		const card = document.createElement('div');
+		card.className = 'game-card';
+		card.onclick = () => openGameModal(name, year, info, imageFileName, waLink);
+
+		card.innerHTML = `
+			<div>
+				<div class="game-thumbnail-container">
+					<img data-src="${imageFileName}" alt="${escapeHtml(name)}" class="game-thumbnail" onerror="this.style.display='none'">
+				</div>
+				<div class="card-top">
+					<span class="game-year">${year}</span>
+					<span class="game-price">${gamePriceFC.toLocaleString('fr-FR')} FC / ${gamePriceUSD} $</span>
+				</div>
+				<div class="game-name">${escapeHtml(name)}</div>
+				<div class="game-info">${escapeHtml(info)}</div>
+			</div>
+			<div class="card-actions" onclick="event.stopPropagation()">
+				<button class="btn-cart-mini" onclick="addToCart('${escapeQuotes(name)}', '${year}', 'PC', '${imageFileName}')">Panier</button>
+				<a href="${waLink}" target="_blank" class="btn-whatsapp-mini">
+					<svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+					Acheter
+				</a>
+			</div>
+		`;
+		grid.appendChild(card);
+
+		const imgElement = card.querySelector('.game-thumbnail');
+		if (imageObserver) {
+			imageObserver.observe(imgElement);
+		} else {
+			imgElement.src = imageFileName;
+			imgElement.onload = () => imgElement.classList.add('loaded');
+		}
+	});
+
+	updateCounter(totalItems);
+	renderPagination(totalPages);
+}
+
+function renderPagination(totalPages) {
+	const container = document.getElementById('paginationContainer');
+	container.innerHTML = '';
+
+	if (totalPages <= 1) return;
+
+	const btn1 = document.createElement('button');
+	btn1.className = `page-btn ${currentPage === 1 ? 'active' : ''}`;
+	btn1.innerText = '1';
+	btn1.onclick = () => goToPage(1);
+	container.appendChild(btn1);
+
+	if (totalPages >= 2) {
+		const btn2 = document.createElement('button');
+		btn2.className = `page-btn ${currentPage === 2 ? 'active' : ''}`;
+		btn2.innerText = '2';
+		btn2.onclick = () => goToPage(2);
+		container.appendChild(btn2);
+	}
+
+	if (totalPages > 3) {
+		const dots = document.createElement('span');
+		dots.style.cssText = "color:var(--text-muted); padding:0 4px; font-weight:800;";
+		dots.innerText = '...';
+		container.appendChild(dots);
+	}
+
+	if (totalPages >= 3 && currentPage >= 3) {
+		const btn3 = document.createElement('button');
+		btn3.className = `page-btn active`;
+		btn3.innerText = currentPage;
+		container.appendChild(btn3);
+	}
+
+	const nextBtn = document.createElement('button');
+	nextBtn.className = `page-btn ${currentPage >= totalPages ? 'disabled' : ''}`;
+	nextBtn.innerHTML = 'Suivant &raquo;';
+	nextBtn.onclick = () => {
+		if (currentPage < totalPages) goToPage(currentPage + 1);
+	};
+	container.appendChild(nextBtn);
+}
+
+function goToPage(page) {
+	currentPage = page;
+	renderPcGames();
+	window.scrollTo({ top: 100, behavior: 'smooth' });
+}
+
+function handleSearchInput() {
+	currentSearchQuery = document.getElementById('gameSearch').value.trim().toLowerCase();
+	document.getElementById('clearSearchBtn').style.display = currentSearchQuery ? 'flex' : 'none';
+	currentPage = 1;
+	renderPcGames();
+}
+
+function clearSearch() {
+	document.getElementById('gameSearch').value = '';
+	currentSearchQuery = '';
+	document.getElementById('clearSearchBtn').style.display = 'none';
+	currentPage = 1;
+	renderPcGames();
+}
+
+function updateCounter(total) {
+	document.getElementById('gameCounter').innerText = `${total} jeux`;
+	document.getElementById('noResults').style.display = total === 0 ? 'block' : 'none';
+}
+
+function openGameModal(name, year, info, imgUrl, waLink) {
+	document.getElementById('modalImg').src = imgUrl;
+	document.getElementById('modalTitle').innerText = name;
+	document.getElementById('modalYear').innerText = `Année : ${year}`;
+	document.getElementById('modalPrice').innerText = `${gamePriceFC.toLocaleString('fr-FR')} FC / ${gamePriceUSD} $`;
+	document.getElementById('modalDesc').innerText = info;
+	document.getElementById('modalActions').innerHTML = `
+		<button class="btn-cart-mini" style="flex:1; padding: 12px;" onclick="addToCart('${escapeQuotes(name)}', '${year}', 'PC', '${imgUrl}'); closeGameModal();">Ajouter au Panier</button>
+		<a href="${waLink}" target="_blank" class="btn-whatsapp-mini" style="padding: 12px;">Commander WhatsApp</a>
+	`;
+	document.getElementById('gameModal').style.display = 'flex';
+}
+
+function closeGameModal() {
+	document.getElementById('gameModal').style.display = 'none';
+}
+
+function toggleCartDrawer() {
+	const overlay = document.getElementById('cartOverlay');
+	if (overlay.style.display === 'flex') {
+		overlay.classList.remove('open');
+		setTimeout(() => overlay.style.display = 'none', 300);
+	} else {
+		overlay.style.display = 'flex';
+		setTimeout(() => overlay.classList.add('open'), 10);
+		renderCart();
+	}
+}
+
+function addToCart(name, year, platform = 'PC', imgUrl = '') {
+	const key = `${name} (${year}) - ${platform}`;
+	if (cart[key]) {
+		toggleCartDrawer();
+	} else {
+		cart[key] = {
+			name: name,
+			year: year,
+			platform: platform,
+			priceFC: gamePriceFC,
+			priceUSD: gamePriceUSD,
+			img: imgUrl || `images/${slugify(name)}.jpg`
+		};
+		saveCart();
+		toggleCartDrawer();
+	}
+}
+
+function removeFromCart(key) {
+	delete cart[key];
+	saveCart();
+	renderCart();
+}
+
+function saveCart() {
+	localStorage.setItem('shogi_global_cart', JSON.stringify(cart));
+	updateCartBadge();
+}
+
+function updateCartBadge() {
+	const total = Object.keys(cart).length;
+	document.getElementById('navCartCount').innerText = total;
+}
+
+function renderCart() {
+	const body = document.getElementById('cartBody');
+	const footer = document.getElementById('cartFooter');
+	const keys = Object.keys(cart);
+	
+	if (keys.length === 0) {
+		body.innerHTML = `
+			<div style="display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; margin-top:50px; padding: 0 20px;">
+				<svg viewBox="0 0 24 24" style="width: 56px; height: 56px; fill: none; stroke: var(--accent); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; margin-bottom: 16px;">
+					<circle cx="9" cy="21" r="1"></circle>
+					<circle cx="20" cy="21" r="1"></circle>
+					<path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+				</svg>
+				<div style="font-size: 15px; font-weight: 800; color: #fff; margin-bottom: 8px;">Votre panier est vide</div>
+				<div style="font-size: 12px; color: var(--text-muted); line-height: 1.5;">Vous n'avez pas encore ajouté de jeux dans votre panier. Parcourez le site pour trouver des offres incroyables !</div>
+			</div>
+		`;
+		footer.innerHTML = '';
+		return;
+	}
+	
+	let html = '';
+	let totalFC = 0;
+	let totalUSD = 0;
+	let waText = `Enchanté Mr Sev, c'est ${clientName || 'un client'}. Je souhaite commander les jeux suivants :\n\n`;
+	
+	keys.forEach(key => {
+		const item = cart[key];
+		totalFC += item.priceFC;
+		totalUSD += parseFloat(item.priceUSD);
+		waText += `▪ ${item.name} (${item.year}) [Plateforme : ${item.platform}] - ${item.priceFC.toLocaleString('fr-FR')} FC (${item.priceUSD} $)\n`;
+		
+		html += `
+		<div class="cart-item">
+			<img src="${item.img}" alt="${escapeHtml(item.name)}" class="cart-item-img" onerror="this.style.display='none'">
+			<div class="cart-item-details">
+				<div style="font-size:12px; font-weight:800; text-transform:uppercase; color:#fff;">${escapeHtml(item.name)}</div>
+				<div style="font-size:10px; color:var(--text-muted);">📅 Année : ${item.year} | 💻 Plateforme : <b>${item.platform}</b></div>
+				<div style="font-size:11px; font-weight:900; color:var(--gold); margin-top:2px;">${item.priceFC.toLocaleString('fr-FR')} FC / ${item.priceUSD} $</div>
+			</div>
+			<button class="cart-item-delete" onclick="removeFromCart('${escapeQuotes(key)}')">&times;</button>
+		</div>`;
+	});
+	
+	body.innerHTML = html;
+	const finalUSDFormatted = totalUSD.toFixed(2);
+	const waLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(waText + `\n💰 Total Général : ${totalFC.toLocaleString('fr-FR')} FC (${finalUSDFormatted} $)`)}`;
+	
+	footer.innerHTML = `
+		<div style="display:flex; justify-content:space-between; margin-bottom:12px; font-size:13px; font-weight:700;">
+			<span>Total Général</span>
+			<span style="color:var(--gold); font-size:14px;">${totalFC.toLocaleString('fr-FR')} FC / ${finalUSDFormatted} $</span>
+		</div>
+		<a href="${waLink}" target="_blank" class="btn-checkout">Valider la commande WhatsApp</a>
+	`;
+}
+
+function escapeHtml(text) {
+	return text.replace(/[&<>"']/g, m => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#039;' })[m]);
+}
+function escapeQuotes(text) {
+	return text.replace(/'/g, "\\'").replace(/"/g, '&quot;');
+}
+</script>
+</body>
+</html>
